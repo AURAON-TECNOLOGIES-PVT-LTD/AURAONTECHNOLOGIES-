@@ -872,6 +872,7 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center;
   position: relative;
   z-index: 1;
   border: 1px solid rgba(255, 255, 255, 0.15);
