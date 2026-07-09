@@ -872,7 +872,8 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center;
+  /* keep the face centered and bias slightly upward so chest stays visible */
+  object-position: center 35%;
   position: relative;
   z-index: 1;
   border: 1px solid rgba(255, 255, 255, 0.15);
