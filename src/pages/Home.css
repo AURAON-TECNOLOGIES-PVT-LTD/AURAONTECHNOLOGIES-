@@ -796,7 +796,7 @@
 }
 
 .founder-card {
-  max-width: 700px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 48px;
   background: transparent;
@@ -830,6 +830,53 @@
   letter-spacing: 2px;
 }
 
+.founder-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.founder-text {
+  text-align: center;
+}
+
+.founder-image-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.founder-image-circle {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  padding: 8px;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+.founder-image-circle::before {
+  content: '';
+  position: absolute;
+  inset: -40px;
+  background: conic-gradient(from 180deg, rgba(14, 165, 233, 0.55), rgba(217, 70, 239, 0.45), rgba(34, 197, 94, 0.35), rgba(14, 165, 233, 0.55));
+  opacity: 0.35;
+  filter: blur(12px);
+}
+
+.founder-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
 .founder-name {
   font-size: 2rem;
   font-weight: 700;
@@ -850,7 +897,7 @@
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.8;
   margin-bottom: 32px;
-  max-width: 600px;
+  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -887,6 +934,16 @@
     font-size: 1.25rem;
   }
 
+  .founder-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .founder-image-circle {
+    width: 200px;
+    height: 200px;
+  }
+
   .founder-name {
     font-size: 1.5rem;
   }
@@ -899,6 +956,7 @@
     font-size: 0.9375rem;
   }
 }
+
 
 /* Buttons */
 .btn {
