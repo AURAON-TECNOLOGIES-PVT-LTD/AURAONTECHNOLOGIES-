@@ -320,16 +320,7 @@ function Home() {
                     </p>
                   </div>
 
-                  <div className="founder-image-wrap" aria-hidden="true">
-                    <div className="founder-image-circle">
-                      <img
-                        className="founder-image"
-                        src="/img.png"
-                        alt="Founder"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
+
                 </div>
               </div>
             </div>
