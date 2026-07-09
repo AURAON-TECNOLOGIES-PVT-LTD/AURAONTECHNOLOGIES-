@@ -324,7 +324,7 @@ function Home() {
                     <div className="founder-image-circle">
                       <img
                         className="founder-image"
-                        src="/founder.jpg"
+                        src="/img.png"
                         alt="Founder"
                         loading="lazy"
                       />
