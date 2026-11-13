@@ -1150,12 +1150,13 @@
    AURAON — HOME HERO FINAL OVERRIDE
 ========================================== */
 
+
 .hero {
   position: relative;
   display: block;
   width: 100%;
- min-height: calc(100svh - 88px);
-height: calc(100svh - 88px);
+  min-height: calc(100svh - 28px) !important;
+  height: calc(100svh - 28px) !important;
   padding: 0;
   overflow: hidden;
   background-color: #17191d;
@@ -1164,6 +1165,7 @@ height: calc(100svh - 88px);
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 
 /* The artwork already contains the logo and headline */
 .hero-content,
