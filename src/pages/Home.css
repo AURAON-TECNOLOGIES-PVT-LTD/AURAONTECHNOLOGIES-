@@ -1256,3 +1256,209 @@
     display: none;
   }
 }
+
+/* =========================================
+   AURAON — HERO BRAND POSITIONING
+========================================= */
+
+.hero {
+  position: relative;
+  min-height: calc(100svh - 92px);
+  height: calc(100svh - 92px);
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(17, 19, 23, 0.28) 0%,
+      rgba(17, 19, 23, 0.12) 48%,
+      rgba(17, 19, 23, 0) 75%
+    ),
+    url("/images/homenew.png") center center / cover no-repeat;
+}
+
+/* Hero text composition */
+.hero-copy {
+  position: absolute;
+  top: 47%;
+  left: clamp(32px, 7vw, 112px);
+  transform: translateY(-50%);
+  width: min(620px, 48%);
+  z-index: 5;
+  color: #ffffff;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 26px;
+  color: #e5cfb2;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.hero-eyebrow-line {
+  width: 42px;
+  height: 1px;
+  background: #e5cfb2;
+}
+
+.hero-copy h1 {
+  margin: 0 0 18px;
+  color: #f6f5f2;
+  font-size: clamp(44px, 5vw, 76px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -2.5px;
+}
+
+.hero-copy h1 span {
+  display: block;
+  color: #e5cfb2;
+}
+
+.hero-copy h2 {
+  margin: 0 0 18px;
+  color: #ffffff;
+  font-size: clamp(19px, 2vw, 25px);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.hero-copy p {
+  max-width: 550px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 16px;
+  line-height: 1.85;
+  font-weight: 400;
+}
+
+/* Company pillars */
+.hero-pillars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: 25px;
+}
+
+.hero-pillars span {
+  color: #e4d4bf;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+}
+
+.hero-pillars span:not(:last-child)::after {
+  content: " /";
+  color: rgba(229, 207, 178, 0.5);
+  margin-left: 10px;
+}
+
+/* CTA buttons */
+.hero-actions {
+  position: relative;
+  top: auto;
+  left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+  z-index: 5;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+}
+
+.hero-cta-primary {
+  color: #202326 !important;
+  background: #e5cfb2;
+  border: 1px solid #e5cfb2;
+}
+
+.hero-cta-primary:hover {
+  background: #f2e4d1;
+  transform: translateY(-2px);
+}
+
+.hero-cta-secondary {
+  color: #ffffff !important;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.55);
+}
+
+.hero-cta-secondary:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 760px;
+    background-position: 58% center;
+  }
+
+  .hero-copy {
+    top: 45%;
+    left: 25px;
+    width: calc(100% - 50px);
+    transform: translateY(-50%);
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(39px, 10vw, 54px);
+    letter-spacing: -1.5px;
+  }
+
+  .hero-copy h2 {
+    font-size: 19px;
+  }
+
+  .hero-copy p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .hero-pillars {
+    gap: 10px;
+  }
+
+  .hero-pillars span {
+    font-size: 10px;
+  }
+
+  .hero-actions {
+    margin-top: 26px;
+  }
+
+  .hero-cta {
+    min-height: 46px;
+    padding: 0 16px;
+    font-size: 12px;
+  }
+
+  .hero .scroll-indicator {
+    display: none;
+  }
+}
