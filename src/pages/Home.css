@@ -2304,13 +2304,13 @@
 .process-orbit {
   position: relative;
   width: 100%;
-  max-width: 1240px;
-  min-height: 900px;
+  max-width: 1080px;
+  min-height: 700px;
   margin: 0 auto;
 
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: 250px 360px 250px;
+  grid-template-rows: 190px 280px 190px;
 
   grid-template-areas:
     "top-left . top-right"
@@ -2319,10 +2319,7 @@
 
   align-items: center;
   justify-items: center;
-
-  column-gap: 28px;
-  row-gap: 20px;
-
+  gap: 0 20px;
   isolation: isolate;
 }
 /* Orbital pathway */
@@ -2330,16 +2327,16 @@
 .process-orbit-track {
   position: absolute;
   z-index: -2;
-  left: 3%;
-  right: 3%;
-  top: 18%;
-  bottom: 12%;
-  border: 1px solid rgba(226, 190, 145, 0.55);
+  left: 10%;
+  right: 10%;
+  top: 20%;
+  bottom: 16%;
+  border: 1px solid rgba(226, 190, 145, 0.45);
   border-radius: 50%;
   pointer-events: none;
   box-shadow:
-    0 0 15px rgba(225, 183, 128, 0.08),
-    inset 0 0 20px rgba(225, 183, 128, 0.04);
+    0 0 12px rgba(225, 183, 128, 0.06),
+    inset 0 0 15px rgba(225, 183, 128, 0.03);
 }
 
 .process-orbit-track::before,
@@ -2404,7 +2401,7 @@
   width: 100%;
   max-width: 300px;
   min-height: 220px;
-  padding: 25px 25px 65px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -2471,9 +2468,9 @@
 .process-orbit-card.orbit-center {
   grid-area: center;
   width: 100%;
-  max-width: 430px;
-  min-height: 320px;
-  padding: 40px 42px 78px;
+  max-width: 380px;
+  min-height: 260px;
+  padding: 32px;
 
   border-color: rgba(244, 205, 157, 0.95);
   border-radius: 30px 7px 30px 7px;
@@ -2737,4 +2734,8 @@
   .process-orbit-arrow {
     transition: none !important;
   }
+}
+/* Remove navigation arrows from all orbit cards */
+.process-orbit-arrow {
+  display: none !important;
 }
