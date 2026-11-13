@@ -3047,3 +3047,61 @@
     gap: 12px;
   }
 }
+
+/* AURAON — PROFESSIONAL ABOUT TYPOGRAPHY */
+
+.founder-section .founder-about-card {
+  max-width: 590px !important;
+}
+
+.founder-section .founder-about-card .process-eyebrow {
+  display: block !important;
+  width: fit-content !important;
+  padding-left: 22px !important;
+  margin: 0 0 20px !important;
+  border-left: 4px solid #3185d8 !important;
+
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 4px !important;
+  line-height: 1.5 !important;
+}
+
+.founder-section .founder-about-card h2 {
+  max-width: 540px !important;
+  margin: 0 0 20px !important;
+
+  color: #ffffff !important;
+  font-size: clamp(32px, 2.7vw, 44px) !important;
+  font-weight: 600 !important;
+  line-height: 1.16 !important;
+  letter-spacing: -0.8px !important;
+}
+
+.founder-section .founder-about-card p {
+  max-width: 550px !important;
+  margin: 0 !important;
+
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0.05px !important;
+}
+
+@media (max-width: 760px) {
+  .founder-section .founder-about-card .process-eyebrow {
+    font-size: 11px !important;
+    letter-spacing: 3px !important;
+  }
+
+  .founder-section .founder-about-card h2 {
+    font-size: clamp(30px, 8vw, 38px) !important;
+  }
+
+  .founder-section .founder-about-card p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+}
