@@ -16,6 +16,7 @@ import './Home.css'
 
 function Home() {
   const [activeCapability, setActiveCapability] = useState(null)
+  const [activeProcess, setActiveProcess] = useState(0)
 
   useEffect(() => {
     const handleAnchorClick = (e) => {
@@ -304,7 +305,7 @@ function Home() {
       </section>
 
      
-      {/* Our Approach — Six-Stage Timeline */}
+      {/* Our Approach — Interactive Six-Stage Orbit */}
       <section
         id="process"
         className="process-section"
@@ -319,38 +320,85 @@ function Home() {
 
             <p>
               Every meaningful innovation begins with a question.
-              Our approach brings research, strategy, design,
-              engineering and continuous improvement together.
+              Explore the six stages that shape how we research,
+              design and engineer original technology.
             </p>
           </div>
 
-          <div className="process-timeline">
-            {process.map((step, index) => (
-              <motion.article
-                key={step.step}
-                className="process-item"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.1
-                }}
-                viewport={{ once: true, amount: 0.2 }}
-              >
-                <div className="process-number">
-                  {step.step}
-                </div>
+          <div className="process-orbit" aria-label="Six stages of our approach">
+            <div className="process-orbit-ring" aria-hidden="true" />
 
-                <div className="process-content">
-                  <span className="process-stage">
-                    STAGE {step.step}
+            {process.map((step, index) => {
+              const isActive = activeProcess === index
+              const otherSteps = process.length - 1
+              const ringIndex = index < activeProcess ? index : index - 1
+              const angle = (ringIndex / otherSteps) * Math.PI * 2 - Math.PI / 2
+              const radiusX = 39
+              const radiusY = 37
+              const x = 50 + Math.cos(angle) * radiusX
+              const y = 50 + Math.sin(angle) * radiusY
+
+              return (
+                <motion.button
+                  key={step.step}
+                  type="button"
+                  className={`process-orbit-card${isActive ? ' is-active' : ''}`}
+                  style={{
+                    '--orbit-x': `${isActive ? 50 : x}%`,
+                    '--orbit-y': `${isActive ? 50 : y}%`
+                  }}
+                  onMouseEnter={() => setActiveProcess(index)}
+                  onFocus={() => setActiveProcess(index)}
+                  onClick={() => setActiveProcess(index)}
+                  aria-pressed={isActive}
+                  initial={{ opacity: 0, scale: 0.88 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.55,
+                    delay: index * 0.07,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  viewport={{ once: true, amount: 0.15 }}
+                >
+                  <span className="process-orbit-number">{step.step}</span>
+                  <span className="process-orbit-stage">STAGE {step.step}</span>
+                  <span className="process-orbit-title">{step.title}</span>
+                  <span className="process-orbit-description">
+                    {step.description}
                   </span>
+                  {isActive && (
+                    <span className="process-orbit-current">
+                      CURRENT FOCUS
+                    </span>
+                  )}
+                </motion.button>
+              )
+            })}
 
-                  <h3>{step.title}</h3>
+            <div className="process-orbit-center" aria-hidden="true">
+              <span>AURAON</span>
+              <strong>OUR<br />APPROACH</strong>
+              <i />
+              <small>IDEA TO EXECUTION</small>
+            </div>
+          </div>
 
-                  <p>{step.description}</p>
-                </div>
-              </motion.article>
+          <div className="process-orbit-mobile">
+            {process.map((step, index) => (
+              <button
+                key={step.step}
+                type="button"
+                className={`process-mobile-step${activeProcess === index ? ' is-active' : ''}`}
+                onClick={() => setActiveProcess(index)}
+                aria-pressed={activeProcess === index}
+              >
+                <span className="process-number">{step.step}</span>
+                <span className="process-mobile-copy">
+                  <span className="process-stage">STAGE {step.step}</span>
+                  <strong>{step.title}</strong>
+                  <span>{step.description}</span>
+                </span>
+              </button>
             ))}
           </div>
         </div>
