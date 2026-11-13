@@ -17,7 +17,6 @@ function Footer() {
       { name: 'About Us', href: '/' },
       { name: 'Our Process', href: '/#process' },
       { name: 'Careers', href: '/careers' },
-      { name: 'Get Quote', href: '/quote' },
     ],
     contact: [
       { icon: <Linkedin size={16} />, text: 'Sai Balaji Singh Rajput', href: 'https://www.linkedin.com/in/ch-sai-balaji-singh-rajput-4a153129a/' },
