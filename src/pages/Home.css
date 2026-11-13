@@ -2305,21 +2305,26 @@
   position: relative;
   width: 100%;
   max-width: 1240px;
-  min-height: 760px;
+  min-height: 900px;
   margin: 0 auto;
+
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: 220px 300px 220px;
+  grid-template-rows: 250px 360px 250px;
+
   grid-template-areas:
     "top-left . top-right"
     ". center ."
     "bottom-left bottom-center bottom-right";
+
   align-items: center;
   justify-items: center;
-  gap: 0 24px;
+
+  column-gap: 28px;
+  row-gap: 20px;
+
   isolation: isolate;
 }
-
 /* Orbital pathway */
 
 .process-orbit-track {
@@ -2467,10 +2472,12 @@
   grid-area: center;
   width: 100%;
   max-width: 430px;
-  min-height: 300px;
-  padding: 38px 42px 75px;
+  min-height: 320px;
+  padding: 40px 42px 78px;
+
   border-color: rgba(244, 205, 157, 0.95);
   border-radius: 30px 7px 30px 7px;
+
   background:
     radial-gradient(
       circle at 50% 0%,
@@ -2482,11 +2489,13 @@
       rgba(58, 55, 51, 0.97),
       rgba(24, 27, 31, 0.98)
     );
+
   box-shadow:
     0 0 22px rgba(230, 185, 125, 0.28),
     0 0 65px rgba(230, 185, 125, 0.12),
     0 30px 75px rgba(0, 0, 0, 0.42);
-  z-index: 4;
+
+  z-index: 10;
 }
 
 .process-orbit-card.is-active::after {
