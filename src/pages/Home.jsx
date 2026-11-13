@@ -1,6 +1,6 @@
 
-import { useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   Search,
   Lightbulb,
@@ -9,11 +9,14 @@ import {
   FlaskConical,
   Rocket,
   ArrowRight,
+  ChevronRight,
   Linkedin
 } from 'lucide-react'
 import './Home.css'
 
 function Home() {
+  const [activeCapability, setActiveCapability] = useState(null)
+
   useEffect(() => {
     const handleAnchorClick = (e) => {
       const href = e.currentTarget.getAttribute('href')
@@ -38,6 +41,26 @@ function Home() {
       })
     }
   }, [])
+
+  useEffect(() => {
+    if (activeCapability === null) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setActiveCapability(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [activeCapability])
 
   const capabilities = [
     {
@@ -179,32 +202,104 @@ function Home() {
             </p>
           </div>
 
-          <div className="services-grid">
+          <div className="services-grid capability-orbit">
             {capabilities.map((capability, index) => (
-              <motion.div
-                key={index}
-                className="service-card"
-                initial={{ opacity: 0, y: 40 }}
+              <motion.article
+                key={capability.title}
+                layoutId={`capability-${index}`}
+                className="service-card capability-card"
+                initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 0.5,
-                  delay: index * 0.1
+                  duration: 0.55,
+                  delay: index * 0.08,
+                  ease: [0.22, 1, 0.36, 1]
                 }}
-                viewport={{ once: true }}
-                whileHover={{
-                  y: -8,
-                  transition: { duration: 0.3 }
-                }}
+                viewport={{ once: true, amount: 0.15 }}
               >
-                <div className="service-icon">
+                <div className="service-icon capability-icon">
                   {capability.icon}
                 </div>
 
                 <h3>{capability.title}</h3>
                 <p>{capability.description}</p>
-              </motion.div>
+
+                <button
+                  type="button"
+                  className="service-arrow capability-arrow"
+                  aria-label={`Explore ${capability.title}`}
+                  aria-expanded={activeCapability === index}
+                  aria-controls="capability-detail"
+                  onClick={() => setActiveCapability(index)}
+                >
+                  <ChevronRight size={21} />
+                </button>
+              </motion.article>
             ))}
           </div>
+
+          <AnimatePresence>
+            {activeCapability !== null && (
+              <motion.div
+                className="capability-overlay"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.28, ease: 'easeOut' }}
+                onClick={() => setActiveCapability(null)}
+              >
+                <motion.article
+                  id="capability-detail"
+                  layoutId={`capability-${activeCapability}`}
+                  className="capability-expanded"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="capability-detail-title"
+                  onClick={(event) => event.stopPropagation()}
+                  transition={{
+                    layout: {
+                      type: 'spring',
+                      stiffness: 230,
+                      damping: 27,
+                      mass: 0.9
+                    }
+                  }}
+                >
+                  <button
+                    type="button"
+                    className="capability-close"
+                    aria-label="Close capability details"
+                    onClick={() => setActiveCapability(null)}
+                  >
+                    <span aria-hidden="true">×</span>
+                  </button>
+
+                  <div className="service-icon capability-icon capability-expanded-icon">
+                    {capabilities[activeCapability].icon}
+                  </div>
+
+                  <span className="capability-label">
+                    AURAON CAPABILITY / 0{activeCapability + 1}
+                  </span>
+
+                  <h2 id="capability-detail-title">
+                    {capabilities[activeCapability].title}
+                  </h2>
+
+                  <p>
+                    {capabilities[activeCapability].description}
+                  </p>
+
+                  <div className="capability-bottom-line">
+                    <span>RESEARCH. ENGINEERING. INNOVATION.</span>
+                    <span className="capability-detail-index">
+                      0{activeCapability + 1} / 06
+                    </span>
+                  </div>
+                </motion.article>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
