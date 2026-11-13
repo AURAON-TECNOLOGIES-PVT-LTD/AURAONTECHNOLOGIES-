@@ -1652,12 +1652,12 @@
   padding: 110px 24px 120px;
   overflow: hidden;
   background:
-    linear-gradient(
-      180deg,
-      rgba(17, 20, 24, 0.38),
-      rgba(17, 20, 24, 0.58)
-    ),
-    url("/images/process.png") center center / cover no-repeat;
+  linear-gradient(
+    180deg,
+    rgba(24, 27, 31, 0.20),
+    rgba(24, 27, 31, 0.35)
+  ),
+  url("/ourapproach.png") center center / cover no-repeat;
 }
 
 /* Heading area — vertically aligned */
