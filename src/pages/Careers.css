@@ -790,3 +790,28 @@
   flex-wrap: wrap;
   gap: 12px;
 }
+
+/* AURAON — CAREERS HERO BUTTON POSITION FIX */
+
+.careers-hero .hero-buttons {
+  position: absolute !important;
+  left: 20.5% !important;
+  top: 56% !important;
+  bottom: auto !important;
+  transform: none !important;
+
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  z-index: 20;
+}
+
+@media (max-width: 768px) {
+  .careers-hero .hero-buttons {
+    left: 7% !important;
+    top: 67% !important;
+    bottom: auto !important;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
