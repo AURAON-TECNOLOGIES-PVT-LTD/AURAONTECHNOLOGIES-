@@ -201,7 +201,7 @@
   background: transparent;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 550px) {
   .logo-img {
     width: 230px;
     max-height: 54px;
