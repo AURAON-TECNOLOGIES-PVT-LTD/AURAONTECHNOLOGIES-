@@ -1640,3 +1640,267 @@
     font-size: 18px;
   }
 }
+
+/* =========================================
+   AURAON — OUR APPROACH FINAL LAYOUT
+========================================= */
+
+/* Main section */
+.process-section {
+  position: relative;
+  width: 100%;
+  padding: 110px 24px 120px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(17, 20, 24, 0.38),
+      rgba(17, 20, 24, 0.58)
+    ),
+    url("/images/process.png") center center / cover no-repeat;
+}
+
+/* Heading area — vertically aligned */
+.process-section > .container > .section-title {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 65px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.process-section .section-title .process-eyebrow {
+  display: block;
+  color: #e5cfb2;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-bottom: 4px;
+}
+
+.process-section .section-title h2 {
+  margin: 0;
+  color: #f4f3f0;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+  text-align: center;
+}
+
+.process-section .section-title p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: rgba(245, 245, 245, 0.82);
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* Six equal timeline columns */
+.process-section .process-timeline {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+  position: relative;
+}
+
+/* Timeline connecting line */
+.process-section .process-timeline::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(229, 207, 178, 0.65),
+    transparent
+  );
+  z-index: 0;
+}
+
+/* Each stage */
+.process-section .process-item {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Number circles */
+.process-section .process-number {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(225, 225, 225, 0.13);
+  border: 1px solid rgba(229, 207, 178, 0.55);
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 700;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+/* Stage cards */
+.process-section .process-content {
+  width: 100%;
+  min-height: 285px;
+  height: 100%;
+  padding: 25px 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(25, 28, 32, 0.72);
+  border: 1px solid rgba(230, 230, 230, 0.25);
+  border-radius: 6px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  text-align: center;
+}
+
+/* Stage label */
+.process-section .process-stage {
+  color: #e5cfb2;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-bottom: 13px;
+}
+
+/* Stage heading */
+.process-section .process-content h3 {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 14px;
+  overflow-wrap: normal;
+}
+
+/* Stage description */
+.process-section .process-content p {
+  width: 100%;
+  color: rgba(245, 245, 245, 0.82);
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+/* Hover effect */
+.process-section .process-item:hover .process-number {
+  background: rgba(229, 207, 178, 0.2);
+  border-color: #e5cfb2;
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
+}
+
+.process-section .process-content {
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.process-section .process-item:hover .process-content {
+  background: rgba(35, 38, 42, 0.9);
+  border-color: rgba(229, 207, 178, 0.55);
+}
+
+/* Laptop and tablet */
+@media (max-width: 1200px) {
+  .process-section .process-timeline {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 20px;
+  }
+
+  .process-section .process-timeline::before {
+    display: none;
+  }
+
+  .process-section .process-content {
+    min-height: 250px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .process-section {
+    padding: 75px 18px 85px;
+    background-position: center center;
+  }
+
+  .process-section > .container > .section-title {
+    margin-bottom: 42px;
+    gap: 12px;
+  }
+
+  .process-section .section-title h2 {
+    font-size: 32px;
+    letter-spacing: -0.8px;
+  }
+
+  .process-section .section-title p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .process-section .process-timeline {
+    max-width: 460px;
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .process-section .process-item {
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr);
+    align-items: start;
+    gap: 15px;
+    text-align: left;
+  }
+
+  .process-section .process-number {
+    width: 54px;
+    height: 54px;
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .process-section .process-content {
+    min-height: 0;
+    height: auto;
+    padding: 22px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .process-section .process-content h3 {
+    font-size: 18px;
+  }
+
+  .process-section .process-content p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
