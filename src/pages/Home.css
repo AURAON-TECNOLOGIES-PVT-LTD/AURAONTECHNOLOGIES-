@@ -2668,3 +2668,43 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* AURAON — FULL-SCREEN CAPABILITIES BACKGROUND */
+
+.services-section {
+  width: 100%;
+  min-height: calc(100svh - 76px);
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  padding: 80px 24px;
+
+  background-image:
+    linear-gradient(
+      rgba(15, 19, 25, 0.12),
+      rgba(15, 19, 25, 0.12)
+    ),
+    url("/images/capabilities.png");
+
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  filter: none;
+}
+
+.capabilities-statement {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .services-section {
+    min-height: calc(100svh - 70px);
+    padding: 60px 24px;
+    background-position: center center;
+  }
+}
