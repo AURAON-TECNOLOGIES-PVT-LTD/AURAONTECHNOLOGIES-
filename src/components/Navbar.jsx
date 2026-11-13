@@ -19,39 +19,76 @@ function Navbar() {
   }, [])
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen)
+    setMenuOpen((prev) => !prev)
   }
 
   const handleNavClick = (e, path) => {
-    if (path === '/careers#top') {
+    // HOME: Always return to the first screen
+    if (path === '/') {
       e.preventDefault()
-      navigate('/careers')
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }, 100)
       setMenuOpen(false)
+
+      if (location.pathname !== '/') {
+        navigate('/', { replace: false })
+
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: 0, behavior: 'instant' })
+        })
+
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }, 150)
+      } else {
+        window.history.replaceState(null, '', '/')
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+
       return
     }
 
+    // CAREERS: Open Careers at the top
+    if (path === '/careers#top') {
+      e.preventDefault()
+      setMenuOpen(false)
+
+      if (location.pathname !== '/careers') {
+        navigate('/careers')
+
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }, 150)
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+
+      return
+    }
+
+    // HOME PAGE SECTIONS
     if (path.startsWith('/#')) {
       e.preventDefault()
+      setMenuOpen(false)
 
-      if (location.pathname !== '/') {
-        navigate('/')
-        setTimeout(() => {
-          const element = document.querySelector(path.substring(1))
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' })
-          }
-        }, 100)
-      } else {
-        const element = document.querySelector(path.substring(1))
+      const targetId = path.substring(2)
+
+      const scrollToSection = () => {
+        const element = document.getElementById(targetId)
+
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
         }
       }
 
-      setMenuOpen(false)
+      if (location.pathname !== '/') {
+        navigate('/')
+
+        setTimeout(scrollToSection, 250)
+      } else {
+        scrollToSection()
+      }
     }
   }
 
@@ -64,11 +101,18 @@ function Navbar() {
   ]
 
   const isActive = (path) => {
-    if (path.startsWith('/#')) {
-      return location.pathname === '/' && location.hash === path.substring(1)
+    if (path === '/') {
+      return location.pathname === '/' && !location.hash
     }
 
-    return location.pathname === path
+    if (path.startsWith('/#')) {
+      return (
+        location.pathname === '/' &&
+        location.hash === path.substring(1)
+      )
+    }
+
+    return location.pathname === path.split('#')[0]
   }
 
   return (
@@ -76,14 +120,23 @@ function Navbar() {
       <div className="nav-glow"></div>
 
       <div className="nav-container">
-        <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
+        <Link
+          to="/"
+          className="logo"
+          onClick={(e) => handleNavClick(e, '/')}
+        >
           <div className="logo-icon">
-            <img src="/logo.jpg" alt="AURAON Logo" className="logo-img" />
+            <img
+              src="/logo.jpg"
+              alt="AURAON Logo"
+              className="logo-img"
+            />
           </div>
+
           <span className="logo-text">AURAON</span>
         </Link>
 
-        <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+        <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
           {navLinks.map((link) => (
             <Link
               key={link.path}
@@ -102,7 +155,11 @@ function Navbar() {
           onClick={toggleMenu}
           role="button"
           tabIndex={0}
-          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-label={
+            menuOpen
+              ? 'Close navigation menu'
+              : 'Open navigation menu'
+          }
           aria-expanded={menuOpen}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -111,7 +168,7 @@ function Navbar() {
             }
           }}
         >
-          {menuOpen ? "✕" : "☰"}
+          {menuOpen ? '✕' : '☰'}
         </div>
       </div>
     </nav>
