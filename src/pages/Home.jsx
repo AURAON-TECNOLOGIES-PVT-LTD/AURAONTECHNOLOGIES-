@@ -11,7 +11,6 @@ import {
   ChevronRight,
   Linkedin
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import './Home.css'
 
 function Home() {
@@ -97,11 +96,11 @@ function Home() {
     title: 'Engineer',
     description: 'We turn ideas into working digital solutions through focused engineering and development.'
   },
-  {
-    step: '06',
-    title: 'Test & Refine',
-    description: 'We evaluate, test, improve, and refine our work through continuous iteration.'
-  }
+ {
+  step: '06',
+  title: 'Validate & Refine',
+  description: 'We test our work, evaluate outcomes, identify improvements, and refine products through continuous iteration.'
+}
 ]
 
 
@@ -186,9 +185,7 @@ function Home() {
           <h3>{capability.title}</h3>
           <p>{capability.description}</p>
 
-          <div className="service-arrow">
-            <ChevronRight size={20} />
-          </div>
+        
         </motion.div>
       ))}
     </div>
@@ -233,25 +230,35 @@ function Home() {
 </section>
 
 
-      <section className="cta-section">
-        <div className="container">
-          <motion.div 
-            className="cta-card glass-card"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="cta-glow"></div>
-            <h2>Ready to Transform Your Business?</h2>
-            <p>Let's collaborate to bring your vision to life with cutting-edge technology.</p>
-            <Link to="/quote" className="btn btn-primary btn-glow">
-              Get Free Quote
-              <ArrowRight size={20} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+     
+{/* Auraon Vision Section */}
+<section className="cta-section">
+  <div className="container">
+    <motion.div
+      className="cta-card glass-card"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      <span className="process-eyebrow">OUR VISION</span>
+
+      <h2>Building What Comes Next.</h2>
+
+      <p>
+        We believe meaningful technology begins with curiosity,
+        develops through research and engineering, and creates
+        lasting value through thoughtful execution.
+      </p>
+
+      <a href="#about" className="hero-cta hero-cta-primary">
+        Discover Auraon
+        <ArrowRight size={18} />
+      </a>
+    </motion.div>
+  </div>
+</section>
+
 
       {/* Founder Section */}
       <section id="founder" className="founder-section">
@@ -271,10 +278,14 @@ function Home() {
                 <div className="founder-grid">
                   <div className="founder-text">
                     <h3 className="founder-name">Ch. Sai Balaji Singh Rajput</h3>
-                    <p className="founder-title">Founder & CEO, Auraon Technologies</p>
-                    <p className="founder-description">
-                      Ch. Sai Balaji Singh Rajput is the Founder and Chief Executive Officer (CEO) of Auraon Technologies, a technology startup focused on building intelligent software solutions for modern businesses. He leads the development of AI-powered applications, scalable web platforms, and innovative digital systems that help organizations improve efficiency, automate workflows, and accelerate digital transformation.
-                    </p>
+                   <p className="founder-title">Founder & CEO, Auraon Technologies & Software Solutions Pvt. Ltd.</p>
+                   <p className="founder-description">
+  Ch. Sai Balaji Singh Rajput is the Founder and Chief Executive
+  Officer of Auraon Technologies & Software Solutions Pvt. Ltd.
+  He leads the company's vision, strategic direction and pursuit
+  of original technology products and ventures, with a focus on
+  research, innovation and engineering.
+</p>
                     <a 
                       href="https://www.linkedin.com/in/ch-sai-balaji-singh-rajput-4a153129a/" 
                       target="_blank" 
@@ -284,9 +295,7 @@ function Home() {
                       <Linkedin size={20} />
                       <span>Connect on LinkedIn</span>
                     </a>
-                    <p className="founder-relationship">
-                    
-                    </p>
+                   
                   </div>
 
 
@@ -305,7 +314,13 @@ function Home() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+           <p>
+  Auraon Technologies & Software Solutions Pvt. Ltd. is an
+  independent, product-driven technology company based in
+  Hyderabad, India. We focus on discovering opportunities,
+  researching ideas, engineering original digital products
+  and building technology-led ventures with a long-term vision.
+</p>
           >
             <div className="section-title">
               
