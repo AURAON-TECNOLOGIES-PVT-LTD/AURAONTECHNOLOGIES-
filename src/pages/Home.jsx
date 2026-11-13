@@ -350,18 +350,21 @@ function Home() {
                 ABOUT AURAON
               </span>
 
-              <h2>Technology With Purpose.</h2>
+              <h2>We build technology for what comes next.</h2>
 
-              <p>
-                Auraon Technologies & Software Solutions Pvt. Ltd. is an
-                independent, product-driven technology company based in
-                Hyderabad, India. We focus on discovering opportunities,
-                researching ideas, engineering original digital products
-                and building technology-led ventures with a long-term vision.
-              </p>
-            </div>
-          </motion.div>
+<p>
+  Auraon is an independent, product-driven technology company
+  based in Hyderabad, India. We identify meaningful opportunities,
+  explore ideas through research, and engineer original digital
+  products and technology-led ventures — guided by purposeful
+  innovation, thoughtful execution, and a long-term vision.
+</p>
 
+<div className="about-positioning">
+  <span>INDEPENDENT THINKING</span>
+  <span>PRODUCT-LED</span>
+  <span>LONG-TERM VISION</span>
+</div>
           {/* Use the exact supplied FounderCEO card image; its LinkedIn symbol and text are already included */}
           <motion.div
             className="founder-card founder-card-image-only"
