@@ -799,3 +799,22 @@
     gap: 12px;
   }
 }
+/* AURAON — FORCE WHITE CAREERS BUTTONS */
+
+.careers-page .apply-btn-box,
+.careers-page .submit-application-btn {
+  background: #f2f2f0 !important;
+  background-color: #f2f2f0 !important;
+  color: #17191b !important;
+  border: 1px solid #ffffff !important;
+  box-shadow: none !important;
+}
+
+.careers-page .apply-btn-box:hover,
+.careers-page .submit-application-btn:hover {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #111315 !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(255,255,255,0.16) !important;
+}
