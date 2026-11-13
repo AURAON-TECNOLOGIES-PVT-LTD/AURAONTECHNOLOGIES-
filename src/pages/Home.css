@@ -2446,90 +2446,142 @@
   }
 }
 
-/* AURAON — FIXED ORBIT PERFORMANCE */
+/* =========================================================
+   AURAON — SCATTERED CARDS / EMPTY ORBIT INTERACTION
+   Cards begin outside the rings. Only the selected card
+   travels to the centre when clicked or keyboard-focused.
+========================================================= */
 
+.process-orbit {
+  position: relative;
+  width: min(100%, 1120px);
+  height: 760px;
+  margin: 0 auto;
+  overflow: visible;
+  isolation: isolate;
+}
+
+/* Keep the circular orbit visible and stationary */
+.process-orbit-ring {
+  left: 50%;
+  top: 50%;
+  width: min(62vw, 620px);
+  height: min(62vw, 620px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Cards start at their own scattered coordinates */
 .process-orbit-card {
-  left: var(--orbit-x) !important;
-  top: var(--orbit-y) !important;
-  transform: translate(-50%, -50%) !important;
-
+  position: absolute;
+  left: var(--orbit-x);
+  top: var(--orbit-y);
+  z-index: 2;
+  width: 238px;
+  min-height: 190px;
+  max-width: 238px;
+  box-sizing: border-box;
+  padding: 22px 21px;
+  transform: translate(-50%, -50%);
   transition:
-    border-color 180ms ease,
-    background 180ms ease,
-    box-shadow 180ms ease !important;
-
-  will-change: auto !important;
+    left 460ms cubic-bezier(0.22, 1, 0.36, 1),
+    top 460ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+  will-change: left, top;
 }
 
-/* Active card must NOT move to the centre or resize */
+/* The selected card is the only card that enters the orbit */
 .process-orbit-card.is-active {
-  left: var(--orbit-x) !important;
-  top: var(--orbit-y) !important;
-  width: 238px !important;
-  min-height: 190px !important;
-  padding: 22px 21px !important;
-  transform: translate(-50%, -50%) !important;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+  width: 238px;
+  min-height: 190px;
+  max-width: 238px;
+  padding: 22px 21px;
+  transform: translate(-50%, -50%);
+  border-color: rgba(229, 207, 178, 0.92);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(229, 207, 178, 0.13), transparent 52%),
+    linear-gradient(145deg, rgba(58, 62, 67, 0.99), rgba(24, 27, 31, 0.99));
+  box-shadow:
+    0 24px 58px rgba(0, 0, 0, 0.46),
+    0 0 30px rgba(213, 178, 133, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
 }
 
+/* Keep the active card's content the same size as the others */
 .process-orbit-card.is-active .process-orbit-number {
-  width: 39px !important;
-  height: 39px !important;
-  margin-bottom: 17px !important;
+  width: 39px;
+  height: 39px;
+  margin-bottom: 17px;
+  font-size: 13px;
+}
+
+.process-orbit-card.is-active .process-orbit-stage {
+  font-size: 9px;
 }
 
 .process-orbit-card.is-active .process-orbit-title {
-  font-size: 18px !important;
+  font-size: 18px;
+  letter-spacing: 0;
 }
 
 .process-orbit-card.is-active .process-orbit-description {
-  font-size: 12px !important;
-}
-/* AURAON — ORBIT SECTION CONTAINMENT FIX */
-
-.process-section {
-  padding-top: 90px;
-  padding-bottom: 90px;
-  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.7;
 }
 
-.process-orbit {
-  width: min(100%, 1120px);
-  height: 650px;
-  margin: 0 auto;
-  position: relative;
-  overflow: visible;
+.process-orbit-card:focus-visible {
+  outline: 2px solid #e5cfb2;
+  outline-offset: 4px;
 }
 
-.process-orbit-ring {
-  width: min(62vw, 650px);
-  height: min(62vw, 650px);
-}
-
-/* Keep orbit cards inside the orbit area */
-.process-orbit-card {
-  max-width: 230px;
-  box-sizing: border-box;
-}
-
-/* Tablet */
+/* Tablet: reduce card size and keep all six within the section */
 @media (max-width: 1100px) and (min-width: 761px) {
   .process-orbit {
-    height: 620px;
+    height: 700px;
   }
 
   .process-orbit-ring {
-    width: 560px;
-    height: 560px;
+    width: 500px;
+    height: 500px;
+  }
+
+  .process-orbit-card,
+  .process-orbit-card.is-active {
+    width: 205px;
+    max-width: 205px;
+    min-height: 180px;
+    padding: 19px 17px;
+  }
+
+  .process-orbit-title,
+  .process-orbit-card.is-active .process-orbit-title {
+    font-size: 16px;
+  }
+
+  .process-orbit-description,
+  .process-orbit-card.is-active .process-orbit-description {
+    font-size: 11px;
   }
 }
 
-/* Mobile */
+/* Mobile uses the existing vertical sequence */
 @media (max-width: 760px) {
   .process-orbit {
     display: none;
   }
 
-  .process-section {
-    padding: 75px 18px;
+  .process-orbit-mobile {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-orbit-card {
+    transition: none !important;
   }
 }
