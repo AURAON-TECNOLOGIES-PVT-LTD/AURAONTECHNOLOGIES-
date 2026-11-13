@@ -16,7 +16,7 @@ import './Home.css'
 
 function Home() {
   const [activeCapability, setActiveCapability] = useState(null)
-  const [activeProcess, setActiveProcess] = useState(0)
+  const [activeProcess, setActiveProcess] = useState(null)
 
   useEffect(() => {
     const handleAnchorClick = (e) => {
@@ -333,37 +333,37 @@ function Home() {
 {process.map((step, index) => {
   const isActive = activeProcess === index
 
-  // Scattered positions around the orbit
+  // Fixed scattered positions outside the circular orbit
   const positions = [
-    { x: 50, y: 9 },
-    { x: 83, y: 31 },
-    { x: 72, y: 78 },
-    { x: 43, y: 89 },
-    { x: 14, y: 70 },
-    { x: 17, y: 28 }
+    { x: 12, y: 29 },
+    { x: 88, y: 29 },
+    { x: 88, y: 71 },
+    { x: 50, y: 85 },
+    { x: 12, y: 71 },
+    { x: 50, y: 15 }
   ]
 
   const position = positions[index]
 
   const navigateWithArrow = (event) => {
-    const keys = ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp']
+    const keyDirection = {
+      ArrowRight: 1,
+      ArrowDown: 1,
+      ArrowLeft: -1,
+      ArrowUp: -1
+    }
 
-    if (!keys.includes(event.key)) return
+    if (!(event.key in keyDirection)) return
 
     event.preventDefault()
 
-    const direction =
-      event.key === 'ArrowRight' || event.key === 'ArrowDown'
-        ? 1
-        : -1
-
     const nextIndex =
-      (index + direction + process.length) % process.length
+      (index + keyDirection[event.key] + process.length) % process.length
 
-    const cards = event.currentTarget.parentElement
-      .querySelectorAll('.process-orbit-card')
+    const orbit = event.currentTarget.closest('.process-orbit')
+    const nextCard = orbit?.querySelectorAll('.process-orbit-card')[nextIndex]
 
-    cards[nextIndex]?.focus()
+    nextCard?.focus()
   }
 
   return (
