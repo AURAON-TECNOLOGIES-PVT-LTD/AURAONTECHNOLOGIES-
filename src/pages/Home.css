@@ -2914,7 +2914,7 @@
   padding: 0 !important;
   top: -145px !important;
   right: -42px !important;
-  transform: none !important;
+  transform: translate(20px, 20px) !important;
   z-index: 3 !important;
 }
 
@@ -2989,6 +2989,7 @@
     justify-content: center !important;
     top: 0 !important;
     right: 0 !important;
+    transform: none !important;
     margin-top: 8px !important;
   }
 
