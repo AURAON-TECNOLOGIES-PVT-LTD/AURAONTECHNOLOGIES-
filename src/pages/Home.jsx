@@ -303,36 +303,19 @@ function Home() {
         </div>
       </section>
 
-      {/* Founder Section */}
+      {/* Founder + About Auraon — composed together on the founder backdrop */}
       <section
         id="founder"
         className="founder-section"
       >
-        <div className="container">
-          <motion.div
-            className="founder-card glass-card"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="founder-content founder-content-image">
-              <img
-                src="/images/FounderCEO.png"
-                alt="Ch. Sai Balaji Singh Rajput — Founder and CEO of Auraon Technologies & Software Solutions Pvt. Ltd."
-                className="founder-profile-card-image"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
-
-          {/* About Auraon — kept inside the Founder page background */}
+        <div className="container founder-layout">
+          {/* About Auraon stays on the left */}
           <motion.div
             id="about"
             className="about-card glass-card founder-about-card"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <div className="section-title">
@@ -350,6 +333,22 @@ function Home() {
                 and building technology-led ventures with a long-term vision.
               </p>
             </div>
+          </motion.div>
+
+          {/* Use the exact supplied FounderCEO card image; its LinkedIn symbol and text are already included */}
+          <motion.div
+            className="founder-card founder-card-image-only"
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <img
+              src="/images/FounderCEO.png"
+              alt="Founder and CEO profile card for Ch. Sai Balaji Singh Rajput"
+              className="founder-profile-card-image"
+              loading="eager"
+            />
           </motion.div>
         </div>
       </section>
