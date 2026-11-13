@@ -336,8 +336,8 @@ function Home() {
   const angle =
     (index / process.length) * Math.PI * 2 - Math.PI / 2
 
-  const radiusX = 39
-  const radiusY = 37
+  const radiusX = 36
+  const radiusY = 29
 
   const x = 50 + Math.cos(angle) * radiusX
   const y = 50 + Math.sin(angle) * radiusY
