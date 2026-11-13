@@ -127,7 +127,7 @@ function Navbar() {
           onClick={goHome}
         >
           <img
-            src="/images/auraonlogo2.png"
+            src="/images/logo.png"
             alt="AURAON Technologies and Software Solutions"
             className="logo-img"
           />
