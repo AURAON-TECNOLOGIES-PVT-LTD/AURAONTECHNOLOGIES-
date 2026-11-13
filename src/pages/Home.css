@@ -2755,3 +2755,89 @@
     border-radius: 12px;
   }
 }
+/* AURAON — Founder and About layout */
+
+.founder-section .founder-layout {
+  width: min(1440px, 92%);
+  min-height: 760px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  align-items: center;
+  gap: 42px;
+  position: relative;
+}
+
+.founder-about-card {
+  width: 100%;
+  max-width: 510px;
+  padding: 30px 10px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  text-align: left;
+  z-index: 2;
+}
+
+.founder-about-card .section-title {
+  text-align: left;
+}
+
+.founder-about-card h2 {
+  font-size: clamp(36px, 4vw, 58px);
+  line-height: 1.12;
+  margin: 18px 0;
+}
+
+.founder-about-card p {
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 540px;
+}
+
+.founder-card-image-only {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  transform: translateY(-38px);
+  z-index: 3;
+}
+
+.founder-profile-card-image {
+  display: block;
+  width: 100%;
+  max-width: 780px;
+  height: auto;
+  object-fit: contain;
+  border: 0;
+  border-radius: 0;
+}
+
+/* Mobile layout */
+@media (max-width: 900px) {
+  .founder-section .founder-layout {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 55px;
+    padding-bottom: 45px;
+  }
+
+  .founder-about-card {
+    max-width: 100%;
+  }
+
+  .founder-card-image-only {
+    justify-content: center;
+    transform: none;
+  }
+
+  .founder-profile-card-image {
+    max-width: 680px;
+  }
+}
