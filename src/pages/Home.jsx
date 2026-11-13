@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  Code2, 
-  Smartphone, 
-  Cloud, 
-  Brain, 
-  Palette, 
-  Database,
+import {
+  Search,
+  Lightbulb,
+  Code2,
+  Blocks,
+  FlaskConical,
+  Rocket,
   ArrowRight,
   ChevronRight,
   Linkedin
@@ -38,44 +38,38 @@ function Home() {
     }
   }, [])
 
-  const services = [
-    {
-      icon: <Code2 size={32} />,
-      title: 'Web Development',
-      description: 'Custom websites and web applications built with modern technologies like React, Node.js, and cloud infrastructure.',
-      color: 'var(--primary-color)'
-    },
-    {
-      icon: <Smartphone size={32} />,
-      title: 'Mobile Apps',
-      description: 'Native and cross-platform mobile applications for iOS and Android using React Native and Flutter.',
-      color: 'var(--secondary-color)'
-    },
-    {
-      icon: <Brain size={32} />,
-      title: 'AI Solutions',
-      description: 'Machine learning models, chatbots, and intelligent automation to transform your business processes.',
-      color: '#d946ef'
-    },
-    {
-      icon: <Cloud size={32} />,
-      title: 'Cloud Services',
-      description: 'Cloud migration, DevOps, and infrastructure management on AWS, Azure, and Google Cloud.',
-      color: '#3b82f6'
-    },
-    {
-      icon: <Palette size={32} />,
-      title: 'UI/UX Design',
-      description: 'User-centered design that creates intuitive, engaging experiences for your digital products.',
-      color: '#f59e0b'
-    },
-    {
-      icon: <Database size={32} />,
-      title: 'Database Solutions',
-      description: 'Database design, optimization, and management for scalable data storage and retrieval.',
-      color: '#10b981'
-    }
-  ]
+  const capabilities = [
+  {
+    icon: <Search size={30} />,
+    title: 'Research & Discovery',
+    description: 'Identifying opportunities, studying problems, and understanding emerging technologies.'
+  },
+  {
+    icon: <Lightbulb size={30} />,
+    title: 'Product Strategy',
+    description: 'Transforming promising ideas into structured product concepts and clear development directions.'
+  },
+  {
+    icon: <Code2 size={30} />,
+    title: 'Technology Engineering',
+    description: 'Engineering reliable, scalable, and secure technology foundations.'
+  },
+  {
+    icon: <Blocks size={30} />,
+    title: 'Digital Product Development',
+    description: 'Designing and developing original digital products from concept to execution.'
+  },
+  {
+    icon: <FlaskConical size={30} />,
+    title: 'Innovation & Experimentation',
+    description: 'Exploring new approaches, testing possibilities, and refining ideas.'
+  },
+  {
+    icon: <Rocket size={30} />,
+    title: 'Venture Development',
+    description: 'Building technology-led ventures with long-term vision and purpose.'
+  }
+]
 
   const process = [
   {
@@ -163,39 +157,43 @@ function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="services-section">
-        <div className="container">
-          <div className="section-title">
-            <h2>Our Services</h2>
-            <p>Comprehensive digital solutions tailored to your business needs</p>
+      {/* Capabilities Section */}
+<section id="capabilities" className="services-section">
+  <div className="container">
+    <div className="section-title">
+      <h2>What We Focus On</h2>
+      <p>
+        The disciplines behind discovering, developing and building
+        original technology ventures.
+      </p>
+    </div>
+
+    <div className="services-grid">
+      {capabilities.map((capability, index) => (
+        <motion.div
+          key={index}
+          className="service-card"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          whileHover={{ y: -8, transition: { duration: 0.3 } }}
+        >
+          <div className="service-icon">
+            {capability.icon}
           </div>
-          
-          <div className="services-grid">
-            {services.map((service, index) => (
-              <motion.div 
-                key={index}
-                className="service-card"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              >
-                <div className="service-glow" style={{ background: service.color }}></div>
-                <div className="service-icon" style={{ color: service.color }}>
-                  {service.icon}
-                </div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <div className="service-arrow">
-                  <ChevronRight size={20} />
-                </div>
-              </motion.div>
-            ))}
+
+          <h3>{capability.title}</h3>
+          <p>{capability.description}</p>
+
+          <div className="service-arrow">
+            <ChevronRight size={20} />
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Process Section */}
 <section id="process" className="process-section">
