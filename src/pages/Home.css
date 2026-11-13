@@ -2445,3 +2445,42 @@
     transition: none !important;
   }
 }
+
+/* AURAON — FIXED ORBIT PERFORMANCE */
+
+.process-orbit-card {
+  left: var(--orbit-x) !important;
+  top: var(--orbit-y) !important;
+  transform: translate(-50%, -50%) !important;
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease !important;
+
+  will-change: auto !important;
+}
+
+/* Active card must NOT move to the centre or resize */
+.process-orbit-card.is-active {
+  left: var(--orbit-x) !important;
+  top: var(--orbit-y) !important;
+  width: 238px !important;
+  min-height: 190px !important;
+  padding: 22px 21px !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.process-orbit-card.is-active .process-orbit-number {
+  width: 39px !important;
+  height: 39px !important;
+  margin-bottom: 17px !important;
+}
+
+.process-orbit-card.is-active .process-orbit-title {
+  font-size: 18px !important;
+}
+
+.process-orbit-card.is-active .process-orbit-description {
+  font-size: 12px !important;
+}
