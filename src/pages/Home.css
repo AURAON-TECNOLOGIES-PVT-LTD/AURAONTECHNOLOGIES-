@@ -2730,3 +2730,28 @@
     background-position: center center;
   }
 }
+/* Founder profile card image */
+.founder-card .founder-content-image {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.founder-profile-card-image {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 18px;
+}
+
+@media (max-width: 768px) {
+  .founder-profile-card-image {
+    width: 100%;
+    border-radius: 12px;
+  }
+}
