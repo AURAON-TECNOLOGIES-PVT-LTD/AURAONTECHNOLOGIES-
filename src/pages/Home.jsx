@@ -395,22 +395,35 @@ function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <img
-              src="/images/FounderCEO.png"
-              alt="Founder and CEO profile card for Ch. Sai Balaji Singh Rajput"
-              className="founder-profile-card-image"
-              style={{
-                display: 'block',
-                width: '100%',
-                maxWidth: '700px',
-                height: 'auto',
-                objectFit: 'contain',
-                border: 0,
-                borderRadius: 0,
-                boxShadow: 'none'
-              }}
-              loading="eager"
-            />
+            <div className="founder-profile-image-wrap">
+              <img
+                src="/images/FounderCEO.png"
+                alt="Founder and CEO profile card for Ch. Sai Balaji Singh Rajput"
+                className="founder-profile-card-image"
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  maxWidth: '700px',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  border: 0,
+                  borderRadius: 0,
+                  boxShadow: 'none'
+                }}
+                loading="eager"
+              />
+
+              <a
+                href="https://www.linkedin.com/in/ch-sai-balaji-singh-rajput-ceo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="founder-linkedin-hotspot"
+                aria-label="Connect with the founder on LinkedIn"
+                title="Connect on LinkedIn"
+              >
+                <Linkedin size={19} />
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
