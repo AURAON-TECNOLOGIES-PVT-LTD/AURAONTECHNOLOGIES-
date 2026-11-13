@@ -233,3 +233,23 @@
 .nav-link.active::after {
   background: #c6a36a;
 }
+/* AURAON logo visibility and sizing */
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: auto;
+  text-decoration: none;
+}
+
+.navbar .logo-img {
+  display: block !important;
+  width: 310px;
+  height: 65px;
+  max-height: 65px;
+  object-fit: contain;
+  object-position: left center;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: transparent !important;
+}
