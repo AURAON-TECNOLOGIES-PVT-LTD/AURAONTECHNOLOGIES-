@@ -185,3 +185,32 @@
     z-index: 1001;
   }
 }
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 310px;
+  height: auto;
+  max-height: 68px;
+  object-fit: contain;
+  display: block;
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    width: 230px;
+    max-height: 54px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-img {
+    width: 190px;
+    max-height: 46px;
+  }
+}
