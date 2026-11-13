@@ -365,6 +365,9 @@ function Home() {
   <span>PRODUCT-LED</span>
   <span>LONG-TERM VISION</span>
 </div>
+            </div>
+          </motion.div>
+
           {/* Use the exact supplied FounderCEO card image; its LinkedIn symbol and text are already included */}
           <motion.div
             className="founder-card founder-card-image-only"
