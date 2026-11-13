@@ -755,7 +755,10 @@
     padding: 48px 24px;
   }
 }
-/* Hide old text already included in the background image */
+/* AURAON — CAREERS HERO OVERLAY
+   The headline and growth graphic are already part of careersnew.png.
+   Keep the original React buttons visible and positioned below the artwork.
+*/
 
 .careers-hero .hero-badge,
 .careers-hero h1,
@@ -763,19 +766,21 @@
   display: none;
 }
 
-/* Keep the existing career action buttons */
-
 .careers-hero .hero-buttons {
   position: absolute;
   left: 20.5%;
-  top: 62%;
+  top: 68%;
   bottom: auto;
+  transform: none;
+  display: flex;
   justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 16px;
-  z-index: 2;
+  z-index: 20;
 }
 
-/* Mobile background positioning */
+/* Mobile careers hero */
 
 @media (max-width: 768px) {
   .careers-hero {
@@ -784,34 +789,9 @@
   }
 
   .careers-hero .hero-buttons {
-  left: 7%;
-  top: 68%;
-  bottom: auto;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-/* AURAON — CAREERS HERO BUTTON POSITION FIX */
-
-.careers-hero .hero-buttons {
-  position: absolute !important;
-  left: 20.5% !important;
-  top: 56% !important;
-  bottom: auto !important;
-  transform: none !important;
-
-  display: flex;
-  justify-content: flex-start;
-  gap: 16px;
-  z-index: 20;
-}
-
-@media (max-width: 768px) {
-  .careers-hero .hero-buttons {
-    left: 7% !important;
-    top: 67% !important;
-    bottom: auto !important;
-    flex-wrap: wrap;
+    left: 7%;
+    top: 72%;
+    bottom: auto;
     gap: 12px;
   }
 }
