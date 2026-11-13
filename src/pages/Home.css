@@ -1466,3 +1466,177 @@
     display: none;
   }
 }
+
+/* =========================================
+   AURAON — CAPABILITIES FINAL DESIGN
+========================================= */
+
+/* Section layout */
+.services-section {
+  padding: 110px 0 120px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20, 23, 27, 0.35),
+      rgba(20, 23, 27, 0.72)
+    ),
+    url("/images/SERVICES.png") center center / cover no-repeat;
+}
+
+/* Section heading */
+.services-section .section-title {
+  max-width: 1280px;
+  margin: 0 auto 55px;
+  padding: 0 24px;
+  text-align: left;
+}
+
+.services-section .section-title h2 {
+  color: #f2f2f0;
+  font-size: clamp(36px, 4vw, 50px);
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  margin-bottom: 15px;
+  text-shadow: none;
+}
+
+.services-section .section-title p {
+  max-width: 680px;
+  margin: 0;
+  color: rgba(242, 242, 240, 0.76);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Three-column capability grid */
+.services-section .services-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/* Premium graphite cards */
+.services-section .service-card {
+  min-height: 265px;
+  padding: 34px 30px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  background: rgba(30, 33, 37, 0.78);
+  border: 1px solid rgba(220, 222, 224, 0.22);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.20);
+  transition: background 0.3s ease, border-color 0.3s ease,
+              transform 0.3s ease;
+}
+
+/* Subtle metallic top edge */
+.services-section .service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(229, 207, 178, 0.7),
+    transparent
+  );
+}
+
+/* Hover */
+.services-section .service-card:hover {
+  transform: translateY(-6px);
+  background: rgba(40, 43, 47, 0.94);
+  border-color: rgba(229, 207, 178, 0.55);
+}
+
+/* Icon */
+.services-section .service-icon {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 27px;
+  color: #e5cfb2;
+  background: rgba(229, 207, 178, 0.07);
+  border: 1px solid rgba(229, 207, 178, 0.28);
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+/* Card title */
+.services-section .service-card h3 {
+  color: #f4f3f0;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+/* Card description */
+.services-section .service-card p {
+  max-width: 350px;
+  color: rgba(238, 239, 239, 0.76);
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Remove old arrow controls */
+.services-section .service-arrow {
+  display: none !important;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .services-section .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .services-section {
+    padding: 75px 0;
+  }
+
+  .services-section .section-title {
+    padding: 0 20px;
+    margin-bottom: 35px;
+  }
+
+  .services-section .section-title h2 {
+    font-size: 34px;
+  }
+
+  .services-section .section-title p {
+    font-size: 14px;
+  }
+
+  .services-section .services-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 20px;
+  }
+
+  .services-section .service-card {
+    min-height: 220px;
+    padding: 28px 24px;
+  }
+
+  .services-section .service-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 22px;
+  }
+
+  .services-section .service-card h3 {
+    font-size: 18px;
+  }
+}
