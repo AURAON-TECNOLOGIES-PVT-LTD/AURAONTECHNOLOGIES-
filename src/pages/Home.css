@@ -2484,3 +2484,52 @@
 .process-orbit-card.is-active .process-orbit-description {
   font-size: 12px !important;
 }
+/* AURAON — ORBIT SECTION CONTAINMENT FIX */
+
+.process-section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  overflow: hidden;
+}
+
+.process-orbit {
+  width: min(100%, 1120px);
+  height: 650px;
+  margin: 0 auto;
+  position: relative;
+  overflow: visible;
+}
+
+.process-orbit-ring {
+  width: min(62vw, 650px);
+  height: min(62vw, 650px);
+}
+
+/* Keep orbit cards inside the orbit area */
+.process-orbit-card {
+  max-width: 230px;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media (max-width: 1100px) and (min-width: 761px) {
+  .process-orbit {
+    height: 620px;
+  }
+
+  .process-orbit-ring {
+    width: 560px;
+    height: 560px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+  .process-orbit {
+    display: none;
+  }
+
+  .process-section {
+    padding: 75px 18px;
+  }
+}
