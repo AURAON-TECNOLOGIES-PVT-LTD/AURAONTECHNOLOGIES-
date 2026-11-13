@@ -355,20 +355,14 @@ function Home() {
               </div>
             </div>
           </motion.div>
-        </div>
-      </section>
 
-      {/* About Section */}
-      <section
-        id="about"
-        className="about-section"
-      >
-        <div className="container">
+          {/* About Auraon — kept inside the Founder page background */}
           <motion.div
-            className="about-card glass-card"
+            id="about"
+            className="about-card glass-card founder-about-card"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
             <div className="section-title">
