@@ -329,18 +329,42 @@ function Home() {
             <div className="process-orbit-ring" aria-hidden="true" />
 
           
+
 {process.map((step, index) => {
   const isActive = activeProcess === index
 
-  // Fixed position for every stage
-  const angle =
-    (index / process.length) * Math.PI * 2 - Math.PI / 2
+  // Scattered positions around the orbit
+  const positions = [
+    { x: 50, y: 9 },
+    { x: 83, y: 31 },
+    { x: 72, y: 78 },
+    { x: 43, y: 89 },
+    { x: 14, y: 70 },
+    { x: 17, y: 28 }
+  ]
 
-  const radiusX = 36
-  const radiusY = 29
+  const position = positions[index]
 
-  const x = 50 + Math.cos(angle) * radiusX
-  const y = 50 + Math.sin(angle) * radiusY
+  const navigateWithArrow = (event) => {
+    const keys = ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp']
+
+    if (!keys.includes(event.key)) return
+
+    event.preventDefault()
+
+    const direction =
+      event.key === 'ArrowRight' || event.key === 'ArrowDown'
+        ? 1
+        : -1
+
+    const nextIndex =
+      (index + direction + process.length) % process.length
+
+    const cards = event.currentTarget.parentElement
+      .querySelectorAll('.process-orbit-card')
+
+    cards[nextIndex]?.focus()
+  }
 
   return (
     <button
@@ -348,11 +372,14 @@ function Home() {
       type="button"
       className={`process-orbit-card${isActive ? ' is-active' : ''}`}
       style={{
-        '--orbit-x': `${x}%`,
-        '--orbit-y': `${y}%`
+        '--orbit-x': `${position.x}%`,
+        '--orbit-y': `${position.y}%`
       }}
       onClick={() => setActiveProcess(index)}
+      onFocus={() => setActiveProcess(index)}
+      onKeyDown={navigateWithArrow}
       aria-pressed={isActive}
+      aria-label={`Stage ${step.step}: ${step.title}`}
     >
       <span className="process-orbit-number">{step.step}</span>
       <span className="process-orbit-stage">STAGE {step.step}</span>
@@ -369,6 +396,7 @@ function Home() {
     </button>
   )
 })}
+
 
 
             <div className="process-orbit-center" aria-hidden="true">
