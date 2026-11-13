@@ -576,9 +576,12 @@ function Careers() {
           <div className="cta-content">
             <h2>Don't See the Right Role?</h2>
             <p>We're always looking for talented people. Send us your resume and we'll reach out when we have a suitable position.</p>
-            <Link to="/quote" className="btn btn-primary btn-lg">
-              Get in Touch <ArrowRight size={18} />
-            </Link>
+           <a
+  href="mailto:info@auraontechnolohies.com?subject=Career%20Enquiry"
+  className="btn btn-primary btn-lg"
+>
+  Get in Touch <ArrowRight size={18} />
+</a>
           </div>
         </div>
       </section>
