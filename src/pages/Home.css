@@ -1145,3 +1145,111 @@
     background-position: center center;
   }
 }
+
+/* ==========================================
+   AURAON — HOME HERO FINAL OVERRIDE
+========================================== */
+
+.hero {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: calc(100svh - 118px);
+  padding: 0;
+  overflow: hidden;
+  background-color: #17191d;
+  background-image: url("/images/AURAONHOME.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* The artwork already contains the logo and headline */
+.hero-content,
+.hero-bg-effects {
+  display: none !important;
+}
+
+/* Properly positioned hero buttons */
+.hero-actions {
+  position: absolute;
+  left: 6.5%;
+  top: 66%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 10;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+}
+
+.hero-cta-primary {
+  background: #e7d2b5;
+  color: #202326 !important;
+  border: 1px solid #e7d2b5;
+}
+
+.hero-cta-primary:hover {
+  background: #f3e6d6;
+  transform: translateY(-2px);
+}
+
+.hero-cta-secondary {
+  background: rgba(20, 23, 27, 0.35);
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.65);
+}
+
+.hero-cta-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+.hero .scroll-indicator {
+  z-index: 10;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 1672 / 941;
+    padding: 0;
+    background-size: 100% 100%;
+    background-position: center;
+  }
+
+  .hero-actions {
+    position: relative;
+    top: auto;
+    left: auto;
+    padding: 20px 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-cta {
+    min-height: 42px;
+    padding: 0 16px;
+    font-size: 12px;
+  }
+
+  .hero .scroll-indicator {
+    display: none;
+  }
+}
