@@ -1904,3 +1904,382 @@
     line-height: 1.7;
   }
 }
+/* =========================================================
+   AURAON — INTERACTIVE CAPABILITY ORBIT
+   Append this block to the very bottom of src/pages/Home.css
+========================================================= */
+
+.services-section .capability-orbit {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 48px, 1160px);
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  perspective: 1200px;
+}
+
+.services-section .capability-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  min-height: 278px;
+  padding: 32px 30px 76px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(222, 202, 174, 0.25);
+  border-radius: 16px 5px 16px 5px;
+  background:
+    linear-gradient(145deg, rgba(47, 51, 56, 0.96), rgba(22, 25, 29, 0.97));
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transform-style: preserve-3d;
+  transition:
+    border-color 360ms ease,
+    box-shadow 360ms ease,
+    background 360ms ease;
+}
+
+.services-section .capability-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(224, 192, 151, 0.16), transparent 48%),
+    linear-gradient(125deg, transparent 38%, rgba(255, 255, 255, 0.045), transparent 72%);
+  transition: opacity 420ms ease;
+}
+
+.services-section .capability-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 28px;
+  right: 28px;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(231, 205, 169, 0.72), transparent);
+  opacity: 0.7;
+}
+
+.services-section .capability-card:hover,
+.services-section .capability-card:focus-within {
+  border-color: rgba(226, 194, 153, 0.68);
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.32),
+    0 0 28px rgba(213, 178, 133, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.services-section .capability-card:hover::before,
+.services-section .capability-card:focus-within::before {
+  opacity: 1;
+}
+
+.services-section .capability-icon {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  margin: 0 0 25px;
+  color: #e8cfad;
+  background: linear-gradient(145deg, rgba(231, 205, 169, 0.13), rgba(231, 205, 169, 0.035));
+  border: 1px solid rgba(224, 196, 158, 0.38);
+  border-radius: 12px 4px 12px 4px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.services-section .capability-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 12px;
+  color: #f4f2ee;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.25px;
+}
+
+.services-section .capability-card p {
+  position: relative;
+  z-index: 1;
+  max-width: 95%;
+  margin: 0;
+  color: rgba(239, 239, 237, 0.72);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* The arrow is the clear interactive focal point. */
+.services-section .capability-arrow {
+  position: absolute;
+  right: 25px;
+  bottom: 22px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: #e8cfad;
+  background: rgba(225, 197, 160, 0.075);
+  border: 1px solid rgba(225, 197, 160, 0.42);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(226, 194, 153, 0);
+  transition:
+    color 280ms ease,
+    background 280ms ease,
+    border-color 280ms ease,
+    box-shadow 320ms ease,
+    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.services-section .capability-arrow svg {
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.services-section .capability-arrow:hover,
+.services-section .capability-arrow:focus-visible {
+  color: #202326;
+  background: #e5c69b;
+  border-color: #f0d7b4;
+  outline: none;
+  box-shadow:
+    0 0 0 5px rgba(229, 198, 155, 0.10),
+    0 0 22px rgba(229, 198, 155, 0.48),
+    0 0 42px rgba(229, 198, 155, 0.18);
+  transform: scale(1.08);
+}
+
+.services-section .capability-arrow:hover svg,
+.services-section .capability-arrow:focus-visible svg {
+  transform: translateX(2px);
+}
+
+/* Full-screen focus state */
+.capability-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(18px, 4vw, 48px);
+  background: rgba(8, 10, 13, 0.82);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.capability-expanded {
+  position: relative;
+  width: min(640px, 100%);
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(34px, 6vw, 62px);
+  overflow: hidden;
+  border: 1px solid rgba(231, 202, 164, 0.72);
+  border-radius: 20px 6px 20px 6px;
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(218, 183, 137, 0.19), transparent 48%),
+    radial-gradient(ellipse at 100% 100%, rgba(218, 183, 137, 0.08), transparent 42%),
+    linear-gradient(145deg, #34383d 0%, #202429 55%, #171a1e 100%);
+  box-shadow:
+    0 35px 110px rgba(0, 0, 0, 0.62),
+    0 0 55px rgba(215, 181, 139, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+.capability-expanded::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 9%;
+  right: 9%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(239, 213, 180, 0.9), transparent);
+}
+
+.capability-expanded .capability-expanded-icon {
+  width: 66px;
+  height: 66px;
+  margin-bottom: 28px;
+  color: #f0d5b1;
+  background: rgba(229, 198, 155, 0.11);
+  border-color: rgba(229, 198, 155, 0.55);
+}
+
+.capability-label {
+  display: block;
+  margin: 0 0 16px;
+  color: #dfbd91;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.capability-expanded h2 {
+  max-width: 500px;
+  margin: 0 0 20px;
+  color: #fbfaf7;
+  font-size: clamp(29px, 5vw, 43px);
+  line-height: 1.16;
+  font-weight: 600;
+  letter-spacing: -1.2px;
+}
+
+.capability-expanded p {
+  max-width: 500px;
+  margin: 0;
+  color: rgba(246, 245, 242, 0.82);
+  font-size: clamp(15px, 2vw, 17px);
+  line-height: 1.9;
+}
+
+.capability-close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: #ead0ad;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(229, 198, 155, 0.34);
+  border-radius: 50%;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 250ms ease, background 250ms ease, transform 250ms ease;
+}
+
+.capability-close:hover,
+.capability-close:focus-visible {
+  color: #202326;
+  background: #e5c69b;
+  outline: none;
+  transform: rotate(90deg);
+}
+
+.capability-bottom-line {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 42px;
+  padding-top: 19px;
+  border-top: 1px solid rgba(229, 198, 155, 0.23);
+  color: #d9bc94;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.capability-detail-index {
+  flex: 0 0 auto;
+  color: rgba(245, 235, 220, 0.58);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .services-section .capability-orbit {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .services-section .capability-card {
+    min-height: 260px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .services-section .capability-orbit {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  .services-section .capability-card {
+    min-height: 224px;
+    padding: 25px 24px 70px;
+  }
+
+  .services-section .capability-card p {
+    max-width: calc(100% - 4px);
+    font-size: 13px;
+  }
+
+  .services-section .capability-arrow {
+    right: 20px;
+    bottom: 18px;
+    width: 43px;
+    height: 43px;
+  }
+
+  .capability-overlay {
+    padding: 16px;
+  }
+
+  .capability-expanded {
+    min-height: 0;
+    padding: 52px 27px 30px;
+  }
+
+  .capability-expanded .capability-expanded-icon {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 23px;
+  }
+
+  .capability-expanded h2 {
+    font-size: clamp(27px, 8vw, 36px);
+  }
+
+  .capability-expanded p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .capability-bottom-line {
+    margin-top: 30px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .capability-close {
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-section .capability-card,
+  .services-section .capability-arrow,
+  .services-section .capability-arrow svg,
+  .capability-close {
+    transition: none !important;
+  }
+}
