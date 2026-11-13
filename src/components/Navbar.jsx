@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './Navbar.css'
@@ -6,16 +7,16 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const navigate = useNavigate()
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -25,26 +26,40 @@ function Navbar() {
     if (path === '/careers#top') {
       e.preventDefault()
       navigate('/careers')
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100)
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }, 100)
       setMenuOpen(false)
       return
     }
+
     if (path.startsWith('/#')) {
       e.preventDefault()
-      navigate('/')
-      setTimeout(() => {
+
+      if (location.pathname !== '/') {
+        navigate('/')
+        setTimeout(() => {
+          const element = document.querySelector(path.substring(1))
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 100)
+      } else {
         const element = document.querySelector(path.substring(1))
-        if (element) element.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+
       setMenuOpen(false)
     }
   }
 
   const navLinks = [
     { path: '/', label: 'Home' },
-    { path: '/#services', label: 'Services' },
-    { path: '/#process', label: 'Process' },
-{ path: '/careers#top', label: 'Careers' },
+    { path: '/#capabilities', label: 'Capabilities' },
+    { path: '/#process', label: 'Our Approach' },
+    { path: '/careers#top', label: 'Careers' },
     { path: '/#founder', label: 'Founder' },
   ]
 
@@ -52,14 +67,16 @@ function Navbar() {
     if (path.startsWith('/#')) {
       return location.pathname === '/' && location.hash === path.substring(1)
     }
+
     return location.pathname === path
   }
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-glow"></div>
+
       <div className="nav-container">
-        <Link to="/" className="logo">
+        <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
           <div className="logo-icon">
             <img src="/logo.jpg" alt="AURAON Logo" className="logo-img" />
           </div>
@@ -78,12 +95,22 @@ function Navbar() {
               <span className="link-glow"></span>
             </Link>
           ))}
-          <Link to="/quote" className="btn btn-primary btn-nav">
-            Get Quote
-          </Link>
         </div>
 
-        <div className="menu-icon" onClick={toggleMenu}>
+        <div
+          className="menu-icon"
+          onClick={toggleMenu}
+          role="button"
+          tabIndex={0}
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={menuOpen}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              toggleMenu()
+            }
+          }}
+        >
           {menuOpen ? "✕" : "☰"}
         </div>
       </div>
