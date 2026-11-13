@@ -308,17 +308,44 @@ function Home() {
         id="founder"
         className="founder-section"
       >
-        <div className="container founder-layout">
+        <div
+          className="container founder-layout"
+          style={{
+            width: 'min(1440px, calc(100% - 100px))',
+            maxWidth: '1440px',
+            minHeight: '760px',
+            margin: '0 auto',
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.12fr)',
+            alignItems: 'center',
+            columnGap: '48px',
+            position: 'relative',
+            overflow: 'visible'
+          }}
+        >
           {/* About Auraon stays on the left */}
           <motion.div
             id="about"
             className="about-card glass-card founder-about-card"
+            style={{
+              width: '100%',
+              maxWidth: '650px',
+              minWidth: 0,
+              padding: '24px 0',
+              margin: 0,
+              background: 'transparent',
+              border: 'none',
+              boxShadow: 'none',
+              textAlign: 'left',
+              position: 'relative',
+              zIndex: 2
+            }}
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="section-title">
+            <div className="section-title" style={{ width: '100%', maxWidth: '650px', textAlign: 'left', margin: 0 }}>
               <span className="process-eyebrow">
                 ABOUT AURAON
               </span>
@@ -338,6 +365,25 @@ function Home() {
           {/* Use the exact supplied FounderCEO card image; its LinkedIn symbol and text are already included */}
           <motion.div
             className="founder-card founder-card-image-only"
+            style={{
+              width: '100%',
+              maxWidth: '700px',
+              minWidth: 0,
+              justifySelf: 'end',
+              alignSelf: 'center',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+              padding: 0,
+              margin: 0,
+              background: 'transparent',
+              border: 'none',
+              boxShadow: 'none',
+              position: 'relative',
+              top: '-78px',
+              right: '-28px',
+              zIndex: 3
+            }}
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -347,6 +393,16 @@ function Home() {
               src="/images/FounderCEO.png"
               alt="Founder and CEO profile card for Ch. Sai Balaji Singh Rajput"
               className="founder-profile-card-image"
+              style={{
+                display: 'block',
+                width: '100%',
+                maxWidth: '700px',
+                height: 'auto',
+                objectFit: 'contain',
+                border: 0,
+                borderRadius: 0,
+                boxShadow: 'none'
+              }}
               loading="eager"
             />
           </motion.div>
