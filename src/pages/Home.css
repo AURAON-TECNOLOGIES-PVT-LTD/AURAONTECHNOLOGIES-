@@ -1154,12 +1154,13 @@
   position: relative;
   display: block;
   width: 100%;
-  min-height: calc(100svh - 118px);
+ min-height: calc(100svh - 88px);
+height: calc(100svh - 88px);
   padding: 0;
   overflow: hidden;
   background-color: #17191d;
   background-image: url("/images/homenew.png");
-  background-position: center center;
+  background-position: center 40%;
   background-size: cover;
   background-repeat: no-repeat;
 }
