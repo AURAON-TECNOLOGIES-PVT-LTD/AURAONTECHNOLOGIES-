@@ -767,9 +767,11 @@
 
 .careers-hero .hero-buttons {
   position: absolute;
-  left: 8%;
-  bottom: 10%;
+  left: 20.5%;
+  top: 62%;
+  bottom: auto;
   justify-content: flex-start;
+  gap: 16px;
   z-index: 2;
 }
 
@@ -782,7 +784,9 @@
   }
 
   .careers-hero .hero-buttons {
-    left: 6%;
-    bottom: 6%;
-  }
+  left: 7%;
+  top: 68%;
+  bottom: auto;
+  flex-wrap: wrap;
+  gap: 12px;
 }
