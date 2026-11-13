@@ -6,114 +6,115 @@ import './Navbar.css'
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
+
   const location = useLocation()
   const navigate = useNavigate()
 
+  // Detect scrolling and highlight the section currently visible
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
+
+      if (location.pathname === '/careers') {
+        setActiveSection('careers')
+        return
+      }
+
+      const sections = [
+        { id: 'capabilities', name: 'capabilities' },
+        { id: 'process', name: 'process' },
+        { id: 'founder', name: 'founder' },
+      ]
+
+      let current = 'home'
+
+      sections.forEach((section) => {
+        const element = document.getElementById(section.id)
+
+        if (element && element.getBoundingClientRect().top <= 180) {
+          current = section.name
+        }
+      })
+
+      setActiveSection(current)
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [location.pathname])
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev)
   }
 
-  const handleNavClick = (e, path) => {
-    // HOME: Always return to the first screen
-    if (path === '/') {
-      e.preventDefault()
-      setMenuOpen(false)
+  // Always return to the first screen of Home
+  const goHome = (e) => {
+    e.preventDefault()
+    setMenuOpen(false)
+    setActiveSection('home')
 
-      if (location.pathname !== '/') {
-        navigate('/', { replace: false })
+    if (location.pathname !== '/') {
+      navigate('/', { replace: false })
 
-        requestAnimationFrame(() => {
-          window.scrollTo({ top: 0, behavior: 'instant' })
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' })
+      }, 100)
+    } else {
+      window.history.replaceState(null, '', '/')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
+  const goToSection = (e, id) => {
+    e.preventDefault()
+    setMenuOpen(false)
+
+    const scrollToTarget = () => {
+      const element = document.getElementById(id)
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
         })
-
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
-        }, 150)
-      } else {
-        window.history.replaceState(null, '', '/')
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        setActiveSection(id)
       }
-
-      return
     }
 
-    // CAREERS: Open Careers at the top
-    if (path === '/careers#top') {
-      e.preventDefault()
-      setMenuOpen(false)
-
-      if (location.pathname !== '/careers') {
-        navigate('/careers')
-
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
-        }, 150)
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }
-
-      return
+    if (location.pathname !== '/') {
+      navigate('/')
+      setTimeout(scrollToTarget, 300)
+    } else {
+      scrollToTarget()
     }
+  }
 
-    // HOME PAGE SECTIONS
-    if (path.startsWith('/#')) {
-      e.preventDefault()
-      setMenuOpen(false)
+  const goToCareers = (e) => {
+    e.preventDefault()
+    setMenuOpen(false)
+    setActiveSection('careers')
 
-      const targetId = path.substring(2)
+    if (location.pathname !== '/careers') {
+      navigate('/careers')
 
-      const scrollToSection = () => {
-        const element = document.getElementById(targetId)
-
-        if (element) {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          })
-        }
-      }
-
-      if (location.pathname !== '/') {
-        navigate('/')
-
-        setTimeout(scrollToSection, 250)
-      } else {
-        scrollToSection()
-      }
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' })
+      }, 100)
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/#capabilities', label: 'Capabilities' },
-    { path: '/#process', label: 'Our Approach' },
-    { path: '/careers#top', label: 'Careers' },
-    { path: '/#founder', label: 'Founder' },
+    { path: '/', label: 'Home', id: 'home' },
+    { path: '/#capabilities', label: 'Capabilities', id: 'capabilities' },
+    { path: '/#process', label: 'Our Approach', id: 'process' },
+    { path: '/careers', label: 'Careers', id: 'careers' },
+    { path: '/#founder', label: 'Founder', id: 'founder' },
   ]
-
-  const isActive = (path) => {
-    if (path === '/') {
-      return location.pathname === '/' && !location.hash
-    }
-
-    if (path.startsWith('/#')) {
-      return (
-        location.pathname === '/' &&
-        location.hash === path.substring(1)
-      )
-    }
-
-    return location.pathname === path.split('#')[0]
-  }
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
@@ -123,7 +124,7 @@ function Navbar() {
         <Link
           to="/"
           className="logo"
-          onClick={(e) => handleNavClick(e, '/')}
+          onClick={goHome}
         >
           <div className="logo-icon">
             <img
@@ -141,8 +142,18 @@ function Navbar() {
             <Link
               key={link.path}
               to={link.path}
-              className={`nav-link ${isActive(link.path) ? 'active' : ''}`}
-              onClick={(e) => handleNavClick(e, link.path)}
+              className={`nav-link ${
+                activeSection === link.id ? 'active' : ''
+              }`}
+              onClick={(e) => {
+                if (link.id === 'home') {
+                  goHome(e)
+                } else if (link.id === 'careers') {
+                  goToCareers(e)
+                } else {
+                  goToSection(e, link.id)
+                }
+              }}
             >
               <span className="link-text">{link.label}</span>
               <span className="link-glow"></span>
@@ -155,11 +166,7 @@ function Navbar() {
           onClick={toggleMenu}
           role="button"
           tabIndex={0}
-          aria-label={
-            menuOpen
-              ? 'Close navigation menu'
-              : 'Open navigation menu'
-          }
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={menuOpen}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
