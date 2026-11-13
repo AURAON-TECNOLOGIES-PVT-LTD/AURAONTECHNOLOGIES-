@@ -211,12 +211,16 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Services Section */
+/* AURAON — CAPABILITIES SECTION */
 .services-section {
-  padding: 100px 0;
+  padding: 110px 0 120px;
   position: relative;
   background:
-    linear-gradient(rgba(20, 23, 27, 0.25), rgba(20, 23, 27, 0.35)),
+    linear-gradient(
+      180deg,
+      rgba(24, 27, 31, 0.30),
+      rgba(24, 27, 31, 0.68)
+    ),
     url("/images/SERVICES.png") center center / cover no-repeat;
 }
 
