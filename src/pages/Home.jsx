@@ -115,21 +115,44 @@ function Home() {
 
   return (
     <div className="home">
+     
       {/* Hero Section */}
-      <section
-        id="home"
-        className="hero"
-        aria-label="Auraon Technologies — Building With Purpose. Growing With Vision."
-      >
-        <div className="hero-actions">
-          <a href="#about" className="hero-cta hero-cta-primary">
-            Discover Auraon
-            <ArrowRight size={18} />
-          </a>
+      <section id="home" className="hero" aria-labelledby="hero-heading">
+        <div className="hero-copy">
+          <div className="hero-eyebrow">
+            <span className="hero-eyebrow-line"></span>
+            AURAON TECHNOLOGIES
+          </div>
 
-          <a href="#process" className="hero-cta hero-cta-secondary">
-            Our Approach
-          </a>
+          <h1 id="hero-heading">
+            We build beyond
+            <span> the ordinary.</span>
+          </h1>
+
+          <h2>Ideas. Engineered into ventures.</h2>
+
+          <p>
+            Auraon is an independent technology company focused on
+            discovering opportunities, researching ideas and engineering
+            original digital products and technology-led ventures.
+          </p>
+
+          <div className="hero-pillars">
+            <span>Research & Discovery</span>
+            <span>Product Innovation</span>
+            <span>Technology Engineering</span>
+          </div>
+
+          <div className="hero-actions">
+            <a href="#about" className="hero-cta hero-cta-primary">
+              Explore Auraon
+              <ArrowRight size={18} />
+            </a>
+
+            <a href="#process" className="hero-cta hero-cta-secondary">
+              How We Build
+            </a>
+          </div>
         </div>
 
         <div className="scroll-indicator">
