@@ -7,11 +7,25 @@
   min-height: 100vh;
 }
 
-/* Hero Section */
+/* AURAON — PREMIUM CAREERS HERO */
+
 .careers-hero {
-  background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-crimson) 100%);
-  padding: 80px 0;
-  text-align: center;
+  position: relative;
+  width: 100%;
+  min-height: calc(100svh - 80px);
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background-image: url("/images/careersnew.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .hero-badge {
@@ -739,5 +753,36 @@
 
   .cta-content {
     padding: 48px 24px;
+  }
+}
+/* Hide old text already included in the background image */
+
+.careers-hero .hero-badge,
+.careers-hero h1,
+.careers-hero p {
+  display: none;
+}
+
+/* Keep the existing career action buttons */
+
+.careers-hero .hero-buttons {
+  position: absolute;
+  left: 8%;
+  bottom: 10%;
+  justify-content: flex-start;
+  z-index: 2;
+}
+
+/* Mobile background positioning */
+
+@media (max-width: 768px) {
+  .careers-hero {
+    min-height: calc(100svh - 70px);
+    background-position: 58% center;
+  }
+
+  .careers-hero .hero-buttons {
+    left: 6%;
+    bottom: 6%;
   }
 }
