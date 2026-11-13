@@ -316,43 +316,13 @@ function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="founder-content">
-              <div className="founder-header">
-                <h2>Founder & CEO</h2>
-              </div>
-
-              <div className="founder-details">
-                <div className="founder-grid">
-                  <div className="founder-text">
-                    <h3 className="founder-name">
-                      Ch. Sai Balaji Singh Rajput
-                    </h3>
-
-                    <p className="founder-title">
-                      Founder & CEO, Auraon Technologies & Software Solutions Pvt. Ltd.
-                    </p>
-
-                    <p className="founder-description">
-                      Ch. Sai Balaji Singh Rajput is the Founder and
-                      Chief Executive Officer of Auraon Technologies
-                      & Software Solutions Pvt. Ltd. He leads the
-                      company's vision, strategic direction and pursuit
-                      of original technology products and ventures,
-                      with a focus on research, innovation and engineering.
-                    </p>
-
-                    <a
-                      href="https://www.linkedin.com/in/ch-sai-balaji-singh-rajput-4a153129a/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="linkedin-button"
-                    >
-                      <Linkedin size={20} />
-                      <span>Connect on LinkedIn</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+            <div className="founder-content founder-content-image">
+              <img
+                src="/images/FounderCEO.png"
+                alt="Ch. Sai Balaji Singh Rajput — Founder and CEO of Auraon Technologies & Software Solutions Pvt. Ltd."
+                className="founder-profile-card-image"
+                loading="eager"
+              />
             </div>
           </motion.div>
 
