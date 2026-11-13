@@ -3105,3 +3105,22 @@
     line-height: 1.7 !important;
   }
 }
+.founder-linkedin-hotspot {
+  position: absolute;
+  left: 10.5%;
+  top: 68%;
+  width: 35%;
+  height: 12%;
+  display: flex;
+  align-items: center;
+  padding-left: 7%;
+  color: #0A66C2;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.founder-linkedin-hotspot svg {
+  width: 19px;
+  height: 19px;
+  stroke-width: 2.5;
+}
