@@ -2706,11 +2706,14 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  transform: translateY(-35px);
 }
 
 .capabilities-statement h2 {
   text-align: left;
   align-items: flex-start;
+  font-size: clamp(38px, 5.2vw, 74px);
+  line-height: 1.12;
 }
 
 @media (max-width: 700px) {
