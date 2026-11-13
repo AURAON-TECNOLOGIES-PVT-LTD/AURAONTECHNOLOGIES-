@@ -16,6 +16,7 @@ import './Home.css'
 
 function Home() {
   const [activeCapability, setActiveCapability] = useState(null)
+  const [activeProcess, setActiveProcess] = useState(0)
 
   useEffect(() => {
     const handleAnchorClick = (e) => {
@@ -303,12 +304,13 @@ function Home() {
         </div>
       </section>
 
-      {/* Our Approach Section */}
+      {/* Our Approach — Connected Innovation Orbit */}
       <section
         id="process"
         className="process-section"
       >
         <div className="container">
+
           <div className="section-title">
             <span className="process-eyebrow">
               OUR APPROACH
@@ -318,39 +320,98 @@ function Home() {
 
             <p>
               Every meaningful innovation begins with a question.
-              Our approach brings research, strategy, engineering,
-              and continuous improvement together.
+              Explore the six stages through which we turn ideas
+              into thoughtfully engineered technology.
             </p>
           </div>
 
-          <div className="process-timeline">
-            {process.map((step, index) => (
-              <motion.div
-                key={index}
-                className="process-item"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.1
-                }}
-                viewport={{ once: true }}
-              >
-                <div className="process-number">
-                  {step.step}
-                </div>
+          <div className="process-orbit">
 
-                <div className="process-content">
-                  <span className="process-stage">
-                    STAGE {step.step}
-                  </span>
+            <div className="process-orbit-track" aria-hidden="true">
+              <span className="orbit-node orbit-node-one" />
+              <span className="orbit-node orbit-node-two" />
+              <span className="orbit-node orbit-node-three" />
+              <span className="orbit-node orbit-node-four" />
+              <span className="orbit-node orbit-node-five" />
+              <span className="orbit-node orbit-node-six" />
+            </div>
+
+            {process.map((step, index) => {
+              const isActive = activeProcess === index
+
+              const orbitSlots = [
+                'orbit-center',
+                'orbit-top-left',
+                'orbit-top-right',
+                'orbit-bottom-left',
+                'orbit-bottom-center',
+                'orbit-bottom-right'
+              ]
+
+              const remaining = process
+                .map((item, itemIndex) => itemIndex)
+                .filter(itemIndex => itemIndex !== activeProcess)
+
+              const position = isActive
+                ? 'orbit-center'
+                : orbitSlots[remaining.indexOf(index) + 1]
+
+              return (
+                <motion.article
+                  key={step.step}
+                  layout
+                  layoutId={`process-stage-${step.step}`}
+                  className={`process-orbit-card ${position} ${isActive ? 'is-active' : ''}`}
+                  transition={{
+                    layout: {
+                      type: 'spring',
+                      stiffness: 180,
+                      damping: 24,
+                      mass: 0.85
+                    }
+                  }}
+                >
+                  <div className="process-orbit-card-top">
+                    <span className="process-orbit-number">
+                      {step.step}
+                    </span>
+
+                    <span className="process-orbit-label">
+                      {isActive ? 'SELECTED STAGE' : 'STAGE'}
+                    </span>
+                  </div>
 
                   <h3>{step.title}</h3>
+
                   <p>{step.description}</p>
-                </div>
-              </motion.div>
-            ))}
+
+                  <button
+                    type="button"
+                    className="process-orbit-arrow"
+                    aria-label={`View ${step.title} as the highlighted stage`}
+                    aria-pressed={isActive}
+                    onClick={() => setActiveProcess(index)}
+                  >
+                    <ChevronRight size={21} />
+                  </button>
+                </motion.article>
+              )
+            })}
+
+            <div className="process-orbit-core" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+
           </div>
+
+          <div className="process-orbit-footer">
+            <span>01 — 06</span>
+            <span>SELECT A STAGE TO EXPLORE OUR APPROACH</span>
+            <span>{String(activeProcess + 1).padStart(2, '0')} / 06</span>
+          </div>
+
         </div>
       </section>
 
