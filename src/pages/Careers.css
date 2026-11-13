@@ -290,9 +290,9 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 24px;
-  background: var(--accent-red);
-  color: var(--text-white);
-  border: none;
+  background: #f2f2f0;
+  color: #17191b;
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-md);
   font-size: 0.875rem;
   font-weight: 700;
@@ -302,8 +302,10 @@
 }
 
 .apply-btn-box:hover {
-  background: var(--accent-light);
-  box-shadow: var(--shadow-glow);
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #111315;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.16);
   transform: translateY(-2px);
 }
 
@@ -578,9 +580,9 @@
 .submit-application-btn {
   width: 100%;
   padding: 16px;
-  background: var(--accent-red);
-  color: var(--text-white);
-  border: none;
+  background: #f2f2f0;
+  color: #17191b;
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-md);
   font-size: 1rem;
   font-weight: 700;
@@ -594,8 +596,10 @@
 }
 
 .submit-application-btn:hover {
-  background: var(--accent-light);
-  box-shadow: var(--shadow-glow);
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #111315;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.16);
 }
 
 .submit-application-btn:disabled {
@@ -617,12 +621,12 @@
 
 .form-error-msg {
   text-align: center;
-  color: #f87171;
+  color: #ffffff;
   font-weight: 600;
   font-size: 0.9375rem;
   padding: 12px;
-  background: rgba(248, 113, 113, 0.1);
-  border: 1px solid rgba(248, 113, 113, 0.3);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: var(--radius-md);
   margin-bottom: 12px;
 }
@@ -679,20 +683,20 @@
   transform: translateY(-50%);
   width: 28px;
   height: 28px;
-  background: rgba(248, 113, 113, 0.2);
-  border: 1px solid rgba(248, 113, 113, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f87171;
+  color: rgba(255, 255, 255, 0.9);
   cursor: pointer;
   transition: var(--transition-fast);
 }
 
 .remove-file-btn:hover {
-  background: rgba(248, 113, 113, 0.3);
-  border-color: rgba(248, 113, 113, 0.6);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.55);
 }
 
 .file-hint {
