@@ -214,3 +214,22 @@
     max-height: 46px;
   }
 }
+.navbar {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 253, 0.96),
+    rgba(238, 237, 232, 0.94),
+    rgba(255, 255, 255, 0.97)
+  );
+  backdrop-filter: blur(22px);
+  border-bottom: 1px solid rgba(255,255,255,0.9);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.nav-link {
+  color: #34383d;
+}
+
+.nav-link.active::after {
+  background: #c6a36a;
+}
