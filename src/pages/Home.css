@@ -598,14 +598,7 @@
     font-size: 1rem;
   }
 
-  .founder-section {
-  padding: 100px 0;
-  position: relative;
-  background:
-    linear-gradient(rgba(20, 23, 27, 0.20), rgba(20, 23, 27, 0.30)),
-    url("/images/founder.png") center center / cover no-repeat;
-}
-
+ 
   .founder-card {
     padding: 40px 24px;
     margin: 0 16px;
@@ -803,10 +796,15 @@
 }
 
 /* Founder Section */
-.founder-section {
+..founder-section {
   padding: 100px 0;
   position: relative;
-  background: transparent;
+  background:
+    linear-gradient(
+      rgba(20, 23, 27, 0.18),
+      rgba(20, 23, 27, 0.28)
+    ),
+    url("/images/founder.png") center center / cover no-repeat;
 }
 
 .founder-card {
