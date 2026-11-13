@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { 
   Code2, 
   Smartphone, 
@@ -8,26 +8,13 @@ import {
   Palette, 
   Database,
   ArrowRight,
-  Zap,
-  Shield,
-  Globe,
   ChevronRight,
-  Sparkles,
   Linkedin
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
 function Home() {
-  const containerRef = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  })
-  
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-
   useEffect(() => {
     const handleAnchorClick = (e) => {
       const href = e.currentTarget.getAttribute('href')
@@ -126,81 +113,23 @@ function Home() {
 
 
 
-  const features = [
-    { icon: <Zap size={24} />, title: 'Lightning Fast', desc: 'Optimized performance', color: '#0ea5e9' },
-    { icon: <Shield size={24} />, title: 'Secure', desc: 'Enterprise-grade security', color: '#22c55e' },
-    { icon: <Globe size={24} />, title: 'Global Scale', desc: 'Worldwide deployment', color: '#3b82f6' }
-  ]
-
   return (
-    <div className="home" ref={containerRef}>
+    <div className="home">
       {/* Hero Section */}
-      <section id="home" className="hero">
-        <div className="hero-bg-effects">
-          <div className="glow-orb orb-1"></div>
-          <div className="glow-orb orb-2"></div>
-          <div className="glow-orb orb-3"></div>
-        </div>
-        
-        <div className="hero-content">
-          <motion.div 
-            className="hero-text"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <div className="hero-badge">
-              <Sparkles size={16} />
-              <span>Next-Gen Software Solutions</span>
-            </div>
-            
-            <h1 className="hero-title">
-              Building <span className="gradient-text">Intelligent</span>
-              <br />
-              Software for the Future
-            </h1>
-            
-            <p className="hero-description">
-              We build AI-powered software that transforms businesses. Fast, secure, and built for scale.
-            </p>
-            
-            <div className="hero-buttons">
-              <Link to="/quote" className="btn btn-primary btn-glow">
-                Start Your Project
-                <ArrowRight size={20} />
-              </Link>
-              <a href="#services" className="btn btn-secondary">
-                Explore Services
-              </a>
-            </div>
+      <section
+        id="home"
+        className="hero"
+        aria-label="Auraon Technologies — Building With Purpose. Growing With Vision."
+      >
+        <div className="hero-actions">
+          <a href="#about" className="hero-cta hero-cta-primary">
+            Discover Auraon
+            <ArrowRight size={18} />
+          </a>
 
-            <div className="hero-features">
-              {features.map((feature, index) => (
-                <motion.div 
-                  key={index}
-                  className="hero-feature"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                >
-                  <div className="feature-icon" style={{ color: feature.color }}>{feature.icon}</div>
-                  <div className="feature-text">
-                    <strong>{feature.title}</strong>
-                    <span>{feature.desc}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            className="hero-visual"
-            style={{ y, opacity }}
-          >
-            <div className="hero-3d-container">
-              <div className="center-glow"></div>
-            </div>
-          </motion.div>
+          <a href="#process" className="hero-cta hero-cta-secondary">
+            Our Approach
+          </a>
         </div>
 
         <div className="scroll-indicator">
