@@ -328,52 +328,48 @@ function Home() {
           <div className="process-orbit" aria-label="Six stages of our approach">
             <div className="process-orbit-ring" aria-hidden="true" />
 
-            {process.map((step, index) => {
-              const isActive = activeProcess === index
-              const otherSteps = process.length - 1
-              const ringIndex = index < activeProcess ? index : index - 1
-              const angle = (ringIndex / otherSteps) * Math.PI * 2 - Math.PI / 2
-              const radiusX = 39
-              const radiusY = 37
-              const x = 50 + Math.cos(angle) * radiusX
-              const y = 50 + Math.sin(angle) * radiusY
+          
+{process.map((step, index) => {
+  const isActive = activeProcess === index
 
-              return (
-                <motion.button
-                  key={step.step}
-                  type="button"
-                  className={`process-orbit-card${isActive ? ' is-active' : ''}`}
-                  style={{
-                    '--orbit-x': `${isActive ? 50 : x}%`,
-                    '--orbit-y': `${isActive ? 50 : y}%`
-                  }}
-                  onMouseEnter={() => setActiveProcess(index)}
-                  onFocus={() => setActiveProcess(index)}
-                  onClick={() => setActiveProcess(index)}
-                  aria-pressed={isActive}
-                  initial={{ opacity: 0, scale: 0.88 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.55,
-                    delay: index * 0.07,
-                    ease: [0.22, 1, 0.36, 1]
-                  }}
-                  viewport={{ once: true, amount: 0.15 }}
-                >
-                  <span className="process-orbit-number">{step.step}</span>
-                  <span className="process-orbit-stage">STAGE {step.step}</span>
-                  <span className="process-orbit-title">{step.title}</span>
-                  <span className="process-orbit-description">
-                    {step.description}
-                  </span>
-                  {isActive && (
-                    <span className="process-orbit-current">
-                      CURRENT FOCUS
-                    </span>
-                  )}
-                </motion.button>
-              )
-            })}
+  // Fixed position for every stage
+  const angle =
+    (index / process.length) * Math.PI * 2 - Math.PI / 2
+
+  const radiusX = 39
+  const radiusY = 37
+
+  const x = 50 + Math.cos(angle) * radiusX
+  const y = 50 + Math.sin(angle) * radiusY
+
+  return (
+    <button
+      key={step.step}
+      type="button"
+      className={`process-orbit-card${isActive ? ' is-active' : ''}`}
+      style={{
+        '--orbit-x': `${x}%`,
+        '--orbit-y': `${y}%`
+      }}
+      onClick={() => setActiveProcess(index)}
+      aria-pressed={isActive}
+    >
+      <span className="process-orbit-number">{step.step}</span>
+      <span className="process-orbit-stage">STAGE {step.step}</span>
+      <span className="process-orbit-title">{step.title}</span>
+      <span className="process-orbit-description">
+        {step.description}
+      </span>
+
+      {isActive && (
+        <span className="process-orbit-current">
+          CURRENT FOCUS
+        </span>
+      )}
+    </button>
+  )
+})}
+
 
             <div className="process-orbit-center" aria-hidden="true">
               <span>AURAON</span>
