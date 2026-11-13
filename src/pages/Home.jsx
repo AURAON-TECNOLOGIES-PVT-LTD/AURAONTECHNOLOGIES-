@@ -2,8 +2,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
-  ArrowRight,
-  Linkedin
+  ArrowRight
 } from 'lucide-react'
 import './Home.css'
 
@@ -413,17 +412,15 @@ function Home() {
                 loading="eager"
               />
 
-             <a
-  href="https://www.linkedin.com/in/ch-sai-balaji-singh-rajput-ceo"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="founder-linkedin-hotspot"
-  aria-label="Connect with the founder on LinkedIn"
-  title="Connect on LinkedIn"
->
-  <span className="real-linkedin-icon">in</span>
-</a>
-                <Linkedin size={19} />
+              <a
+                href="https://www.linkedin.com/in/ch-sai-balaji-singh-rajput-ceo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="founder-linkedin-hotspot"
+                aria-label="Connect with the founder on LinkedIn"
+                title="Connect on LinkedIn"
+              >
+                <span className="real-linkedin-icon">in</span>
               </a>
             </div>
           </motion.div>
