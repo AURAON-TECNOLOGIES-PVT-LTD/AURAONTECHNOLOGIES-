@@ -91,27 +91,38 @@ function Home() {
   ]
 
   const process = [
-    {
-      step: '01',
-      title: 'Discovery',
-      description: 'We understand your business goals, target audience, and project requirements through in-depth consultation.'
-    },
-    {
-      step: '02',
-      title: 'Strategy',
-      description: 'We create a detailed roadmap with timelines, milestones, and deliverables tailored to your needs.'
-    },
-    {
-      step: '03',
-      title: 'Development',
-      description: 'Our expert team builds your solution using agile methodologies and industry best practices.'
-    },
-    {
-      step: '04',
-      title: 'Launch',
-      description: 'We deploy your solution and provide comprehensive support and maintenance services.'
-    }
-  ]
+  {
+    step: '01',
+    title: 'Identify',
+    description: 'We identify meaningful opportunities, understand emerging needs, and recognise problems worth solving.'
+  },
+  {
+    step: '02',
+    title: 'Research',
+    description: 'We study the problem, explore possibilities, and evaluate technologies before moving forward.'
+  },
+  {
+    step: '03',
+    title: 'Strategise',
+    description: 'We define the direction, establish priorities, and create a practical roadmap.'
+  },
+  {
+    step: '04',
+    title: 'Design',
+    description: 'We shape the structure, functionality, and user experience with clarity and purpose.'
+  },
+  {
+    step: '05',
+    title: 'Engineer',
+    description: 'We turn ideas into working digital solutions through focused engineering and development.'
+  },
+  {
+    step: '06',
+    title: 'Test & Refine',
+    description: 'We evaluate, test, improve, and refine our work through continuous iteration.'
+  }
+]
+
 
 
 
@@ -235,33 +246,41 @@ function Home() {
       </section>
 
       {/* Process Section */}
-      <section id="process" className="process-section">
-        <div className="container">
-          <div className="section-title">
-            <h2>How We Work</h2>
-            <p>Our proven process ensures successful project delivery</p>
+<section id="process" className="process-section">
+  <div className="container">
+    <div className="section-title">
+      <span className="process-eyebrow">OUR APPROACH</span>
+      <h2>From Thought to Technology.</h2>
+      <p>
+        Every meaningful innovation begins with a question.
+        Our approach brings research, strategy, engineering,
+        and continuous improvement together.
+      </p>
+    </div>
+
+    <div className="process-timeline">
+      {process.map((step, index) => (
+        <motion.div
+          key={index}
+          className="process-item"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.1 }}
+          viewport={{ once: true }}
+        >
+          <div className="process-number">{step.step}</div>
+          <div className="process-content">
+            <span className="process-stage">
+              STAGE {step.step}
+            </span>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
           </div>
-          
-          <div className="process-timeline">
-            {process.map((step, index) => (
-              <motion.div 
-                key={index}
-                className="process-item"
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                viewport={{ once: true }}
-              >
-                <div className="process-number">{step.step}</div>
-                <div className="process-content glass-card">
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
 
       <section className="cta-section">
