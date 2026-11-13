@@ -2,8 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import Quote from './pages/Quote'
-import Confirmation from './pages/Confirmation'
 import ApplicationConfirmation from './pages/ApplicationConfirmation'
 import Careers from './pages/Careers'
 import './App.css'
@@ -15,8 +13,6 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/quote" element={<Quote />} />
-          <Route path="/confirmation" element={<Confirmation />} />
           <Route path="/application-confirmation" element={<ApplicationConfirmation />} />
           <Route path="/careers" element={<Careers />} />
         </Routes>
