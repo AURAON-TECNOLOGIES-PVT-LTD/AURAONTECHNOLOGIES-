@@ -126,11 +126,11 @@ function Navbar() {
           className="logo"
           onClick={goHome}
         >
-          <img
-            src="/images/auraonlogo2.png"
-            alt="AURAON Technologies and Software Solutions"
-            className="logo-img"
-          />
+         <img
+  src="/images/logonobg.png"
+  alt="AURAON Technologies and Software Solutions"
+  className="logo-img"
+/>
         </Link>
 
         <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
