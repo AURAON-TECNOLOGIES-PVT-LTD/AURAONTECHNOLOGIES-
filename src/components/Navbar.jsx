@@ -11,7 +11,7 @@ function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  // Detect scrolling and highlight the section currently visible
+  // Detect scrolling and highlight the visible section
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
@@ -46,28 +46,30 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [location.pathname])
 
+  // Close mobile menu
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev)
   }
 
-  // Always return to the first screen of Home
+  // Return to Home first screen
   const goHome = (e) => {
     e.preventDefault()
     setMenuOpen(false)
     setActiveSection('home')
 
     if (location.pathname !== '/') {
-      navigate('/', { replace: false })
+      navigate('/')
 
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'instant' })
-      }, 100)
+      }, 150)
     } else {
       window.history.replaceState(null, '', '/')
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
+  // Navigate to Home page sections
   const goToSection = (e, id) => {
     e.preventDefault()
     setMenuOpen(false)
@@ -80,6 +82,7 @@ function Navbar() {
           behavior: 'smooth',
           block: 'start',
         })
+
         setActiveSection(id)
       }
     }
@@ -92,6 +95,7 @@ function Navbar() {
     }
   }
 
+  // Navigate to Careers
   const goToCareers = (e) => {
     e.preventDefault()
     setMenuOpen(false)
@@ -102,7 +106,7 @@ function Navbar() {
 
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'instant' })
-      }, 100)
+      }, 150)
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
@@ -121,24 +125,27 @@ function Navbar() {
       <div className="nav-glow"></div>
 
       <div className="nav-container">
+        {/* AURAON COMPANY LOGO */}
         <Link
           to="/"
           className="logo"
           onClick={goHome}
+          aria-label="AURAON Home"
         >
-         <img
-  src="/images/logonobg.png"
-  alt="AURAON Technologies and Software Solutions"
-  className="logo-img"
-/>
+          <img
+            src="/images/logonobg.png"
+            alt="AURAON Technologies and Software Solutions"
+            className="logo-img"
+          />
         </Link>
 
+        {/* NAVIGATION LINKS */}
         <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`nav-link ${
+              className={`nav-link nav-link-white ${
                 activeSection === link.id ? 'active' : ''
               }`}
               onClick={(e) => {
@@ -157,12 +164,15 @@ function Navbar() {
           ))}
         </div>
 
+        {/* MOBILE MENU BUTTON */}
         <div
           className="menu-icon"
           onClick={toggleMenu}
           role="button"
           tabIndex={0}
-          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-label={
+            menuOpen ? 'Close navigation menu' : 'Open navigation menu'
+          }
           aria-expanded={menuOpen}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
