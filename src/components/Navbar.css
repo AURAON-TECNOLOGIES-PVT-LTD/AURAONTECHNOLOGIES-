@@ -243,13 +243,24 @@
 }
 
 .navbar .logo-img {
-  display: block !important;
-  width: 310px;
-  height: 65px;
-  max-height: 65px;
+  display: block;
+  width: 390px;
+  height: 76px;
+  max-height: 76px;
   object-fit: contain;
   object-position: left center;
-  opacity: 1 !important;
-  visibility: visible !important;
-  background: transparent !important;
+  background: transparent;
+}
+@media (max-width: 768px) {
+  .navbar .logo-img {
+    width: 280px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .logo-img {
+    width: 230px;
+    height: 50px;
+  }
 }
