@@ -222,3 +222,15 @@
     height: 68px;
   }
 }
+/* FORCE WHITE NAVIGATION TEXT */
+
+.navbar .nav-link-white,
+.navbar .nav-link-white .link-text,
+.navbar .nav-link-white:hover,
+.navbar .nav-link-white.active {
+  color: #FFFFFF !important;
+}
+
+.navbar .nav-link-white::after {
+  background: #FFFFFF !important;
+}
